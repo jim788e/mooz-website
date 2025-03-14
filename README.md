@@ -2,14 +2,17 @@
 
 A modern web application for the MOOZ NFT Collection on the SEI blockchain, built with Next.js and TailwindCSS.
 
+🌐 **Official Website**: [https://www.mooz.farm](https://www.mooz.farm)
+
 ## 🌟 Features
 
 - Responsive design optimized for all devices
-- Real-time NFT statistics integration
+- Real-time NFT statistics via Magic Eden API
 - Interactive UI components
 - SEI blockchain integration
 - Magic Eden marketplace integration
 - Social media integration
+- Live market analytics including floor price, volume, and holder statistics
 
 ## 🚀 Getting Started
 
@@ -17,7 +20,7 @@ A modern web application for the MOOZ NFT Collection on the SEI blockchain, buil
 
 - Node.js 16.x or later
 - npm or yarn
-- A Magic Eden API key
+- A Magic Eden API key (required for real-time NFT statistics)
 
 ### Installation
 
@@ -54,7 +57,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the website.
 - [Next.js](https://nextjs.org/) - React framework
 - [TailwindCSS](https://tailwindcss.com/) - CSS framework
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [Magic Eden API](https://api.magiceden.dev/) - NFT marketplace integration
+- [Magic Eden API](https://api.magiceden.dev/) - NFT marketplace integration and real-time statistics
 
 ## 📁 Project Structure
 
