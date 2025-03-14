@@ -1,24 +1,27 @@
 # MOOZ Collection Website
 
-A modern web application for the MOOZ NFT Collection on the SEI blockchain, built with Next.js and TailwindCSS.
+A modern web application for the MOOZ NFT Collection on the SEI blockchain, built with Next.js 15 and TailwindCSS.
 
 🌐 **Official Website**: [https://www.mooz.farm](https://www.mooz.farm)
 
 ## 🌟 Features
 
+- Built with Next.js 15 App Router
 - Responsive design optimized for all devices
 - Real-time NFT statistics via Magic Eden API
-- Interactive UI components
+- Interactive UI components with shadcn/ui
 - SEI blockchain integration
 - Magic Eden marketplace integration
 - Social media integration
 - Live market analytics including floor price, volume, and holder statistics
+- Optimized local image delivery
+- Modern image formats support (AVIF, WebP)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 16.x or later
+- Node.js 18.17 or later
 - npm or yarn
 - A Magic Eden API key (required for real-time NFT statistics)
 
@@ -26,48 +29,54 @@ A modern web application for the MOOZ NFT Collection on the SEI blockchain, buil
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/mooz-website.git
+git clone https://github.com/jim788e/mooz-website.git
 cd mooz-website
 ```
 
 2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
 ```
 
 3. Set up environment variables:
 ```bash
 cp .env.example .env
 ```
-Edit `.env` and add your Magic Eden API key and NFT contract address.
+Edit `.env` and add your Magic Eden API key.
 
 4. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the website.
 
 ## 🛠️ Built With
 
-- [Next.js](https://nextjs.org/) - React framework
+- [Next.js 15](https://nextjs.org/) - React framework with App Router
 - [TailwindCSS](https://tailwindcss.com/) - CSS framework
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [Magic Eden API](https://api.magiceden.dev/) - NFT marketplace integration and real-time statistics
+- [Magic Eden API](https://api.magiceden.dev/) - NFT marketplace integration
+- [Vercel Analytics](https://vercel.com/analytics) - Performance monitoring
 
 ## 📁 Project Structure
 
 ```
 mooz-website/
-├── app/              # Next.js app directory
-├── components/       # React components
-├── lib/             # Utility functions
-├── public/          # Static assets
-└── styles/          # Global styles
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   ├── components/        # React components
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── public/                # Static assets
+│   └── images/           # Optimized local images
+│       ├── about/        # About section images
+│       ├── bg/           # Background images
+│       ├── cows/         # NFT collection images
+│       ├── logo/         # Logo assets
+│       ├── marketplace/  # Marketplace assets
+│       └── team/         # Team member images
+└── lib/                  # Utility functions
 ```
 
 ## 🔒 Environment Variables
@@ -76,10 +85,18 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 MAGIC_EDEN_API_KEY=your_api_key_here
-NEXT_PUBLIC_NFT_CONTRACT_ADDRESS=your_contract_address_here
 ```
 
 ⚠️ Never commit your `.env` file to version control!
+
+## 🚀 Deployment
+
+This project is optimized for deployment on Vercel:
+
+```bash
+npm run build   # Build the project
+npm run start   # Start production server
+```
 
 ## 🤝 Contributing
 
