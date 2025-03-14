@@ -39,7 +39,7 @@ export default function Home() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mooz-logosmall-oEPHyooPOqztDVkb2fJKVTmll93Fqw.png"
+              src="/images/logo/logo.png"
               alt="MOOZ Logo"
               width={40}
               height={40}
@@ -101,7 +101,15 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 z-0 bg-[url('https://www.subber.xyz/_next/image?url=https%3A%2F%2Feemrlvzcxfcudiminbgx.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fassets%2Fcover-images%2F33c6b205e0d2.webp&w=1920&q=75')] bg-cover bg-center opacity-10" />
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/bg/hero-bg.avif"
+              alt="Hero Background"
+              fill
+              priority
+              className="object-cover opacity-10"
+            />
+          </div>
           <div className="container relative z-10 flex flex-col items-center text-center">
             <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Welcome to the MOOZ farm</h1>
             <p className="text-xl md:text-2xl text-navy-300 max-w-3xl mb-10">
@@ -134,7 +142,7 @@ export default function Home() {
                 >
                   <div className="relative aspect-square">
                     <Image
-                      src={`https://bafybeig4twxfk6l3yuc6ec7jf3ekxgsbe6mwkonjgawbulfankanjueuoq.ipfs.w3s.link/${i}.png`}
+                      src={`/images/cows/${i}.png`}
                       alt={`Cow NFT #${i + 1}`}
                       fill
                       className="object-cover"
@@ -170,17 +178,21 @@ export default function Home() {
           Join the Herd and become part of Moovia's unfolding story where your choices help shape the legend.
         </p>
         <div className="flex gap-4">
-          <Button className="bg-gradient-me hover:opacity-90 text-white">
-            <Discord className="mr-2 h-4 w-4" />
-            Join Community
-          </Button>
+          <a href="https://discord.com/invite/WWBJYYkYt2" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-gradient-me hover:opacity-90 text-white">
+              <Discord className="mr-2 h-4 w-4" />
+              Join Community
+            </Button>
+          </a>
         </div>
       </div>
-      <div className="relative h-[400px] rounded-xl overflow-hidden">
+      <div className="w-full min-h-[300px] md:h-[400px] relative rounded-xl overflow-hidden">
         <Image
-          src="https://pbs.twimg.com/media/Gf0Lcl5WIAAxUDX?format=jpg&name=large"
+          src="/images/about/about-preview.jpg"
           alt="About MOOZ Cows"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority
           className="object-cover"
         />
       </div>
@@ -192,9 +204,9 @@ export default function Home() {
         <section id="roadmap" className="py-20 bg-navy-900">
           <div className="container">
             <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Roadmap</h2>
-            <div className="relative">
+            <div className="relative max-w-4xl mx-auto">
               {/* Vertical line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-navy-800"></div>
+              <div className="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-navy-800"></div>
 
               {/* Roadmap items */}
               <div className="space-y-12">
@@ -220,18 +232,20 @@ export default function Home() {
                     description: "MOOZ Cows enter the metaverse with 3D models",
                   },
                 ].map((item, i) => (
-                  <div key={i} className={`flex items-center ${i % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}>
-                    <div className={`w-1/2 ${i % 2 === 0 ? "pr-12 text-right" : "pl-12 text-left"}`}>
+                  <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
+                    <div className={`w-full md:w-[calc(50%-2.5rem)] ${i % 2 === 0 ? "md:pr-12 md:text-right text-left pl-12" : "md:pl-12 pl-12"}`}>
                       <span className="inline-block px-3 py-1 bg-navy-800 text-secondary rounded-full text-sm font-medium mb-2">
                         {item.phase}
                       </span>
                       <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
                       <p className="text-navy-300">{item.description}</p>
                     </div>
-                    <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-gradient-me border-4 border-navy-950">
-                      <span className="text-white font-bold">{i + 1}</span>
+                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-1">
+                      <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-gradient-me border-4 border-navy-950">
+                        <span className="text-white font-bold">{i + 1}</span>
+                      </div>
                     </div>
-                    <div className="w-1/2"></div>
+                    <div className="hidden md:block w-[calc(50%-2.5rem)]"></div>
                   </div>
                 ))}
               </div>
@@ -248,22 +262,19 @@ export default function Home() {
                 {
                   name: "misios",
                   role: "Founder & Dev",
-                  image:
-                    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1.png-oyX0FsssCku8eHEzUgFyJDQ8i9sseP.jpeg",
+                  image: "/images/team/misios.jpeg",
                   twitter: "https://x.com/d_misios",
                 },
                 {
                   name: "PsEyecho",
                   role: "Founder",
-                  image:
-                    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/0.png-Pa4brC5MCbn1H7MVqa2jjBHClOq51y.jpeg",
+                  image: "/images/team/pseyecho.jpeg",
                   twitter: "https://x.com/GUTTERSWOLE",
                 },
                 {
                   name: "b1337n",
                   role: "Founder-Collabs",
-                  image:
-                    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2.png-58XRM1nfLHZ6Cw48nq9Ec6FbpDt1IT.jpeg",
+                  image: "/images/team/b1337n.jpeg",
                   twitter: "https://x.com/BenSEI_1337",
                 },
               ].map((member, i) => (
@@ -273,9 +284,11 @@ export default function Home() {
                 >
                   <div className="relative aspect-square">
                     <Image
-                      src={member.image || "/placeholder.svg?height=300&width=300"}
-                      alt={member.name}
+                      src={member.image}
+                      alt={`${member.name}'s profile picture`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      priority
                       className="object-cover"
                     />
                   </div>
@@ -373,7 +386,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative h-[400px] rounded-xl overflow-hidden">
                 <Image
-                  src="https://i.ibb.co/KpYqRfGY/photo-2025-02-27-01-24-39.jpg"
+                  src="/images/marketplace/marketplace-preview.jpg"
                   alt="NFT Marketplace"
                   fill
                   className="object-cover"
@@ -387,7 +400,7 @@ export default function Home() {
                 <ul className="space-y-4 mb-6">
                   <li className="flex items-center gap-4 text-navy-300">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-4yhShGGFAZy4QyqhMNailQFMLfDXEg.webp"
+                      src="/images/marketplace/magic-eden.webp"
                       alt="Magic Eden"
                       width={24}
                       height={24}
