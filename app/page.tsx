@@ -52,15 +52,12 @@ export default function Home() {
               { href: "#collection", label: "Collection" },
               { href: "#StatsSection", label: "Stats" },
               { 
-                href: "#", 
+                href: "#staking", 
                 label: (
-                  <span className="flex items-center">
+                  <span className="glow-text-green relative inline-block">
                     Staking
-                    <span className="ml-2 px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-full animate-pulse">
-                      Soon
-                    </span>
                   </span>
-                ) 
+                )
               },
               { href: "#roadmap", label: "Roadmap" },
               { href: "#team", label: "Team" }, 
@@ -157,6 +154,77 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Staking Section */}
+        <section id="staking" className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/staking/stacking.jpg"
+              alt="Staking Background"
+              fill
+              className="object-cover opacity-20"
+              priority
+            />
+          </div>
+          <div className="container relative z-10">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-6 animate-glow">
+                Staking is LIVE! 👑
+              </h2>
+              <p className="text-xl md:text-2xl text-navy-300 mb-8">
+                Claim Your Royal Rewards
+              </p>
+              <div className="prose prose-invert mx-auto mb-10">
+                <p className="text-lg text-navy-300">
+                  Lock your $MOOZ in the Kingdom's Vault and watch your loyalty bloom into riches. 
+                  Earn passive $MOOZ rewards while fortifying Moovia's future — your tokens power the realm!
+                </p>
+                <div className="my-8 p-6 bg-navy-900/50 rounded-xl border border-navy-800 glow-border">
+                  <h3 className="text-xl font-bold text-white mb-6 text-center animate-pulse-slow">The Crown's Command:</h3>
+                  <ul className="text-navy-300 space-y-6 list-none p-0 m-0">
+                    <li className="flex items-center justify-center text-lg glow-text-green">
+                      <span>✨ Stake your MOOZ NFT</span>
+                    </li>
+                    <li className="flex items-center justify-center text-lg">
+                      <span className="glow-text-blue">💎 Trade with cunning</span>
+                      <span className="ml-2 px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-full animate-pulse">
+                        Soon
+                      </span>
+                    </li>
+                    <li className="flex items-center justify-center text-lg glow-text-gold">
+                      <span>👑 Dominate the game</span>
+                    </li>
+                  </ul>
+                </div>
+                <p className="text-lg text-navy-300 italic">
+                  The throne awaits those who seize the moment. Will you rule?
+                </p>
+              </div>
+              <a
+                href="https://grazing.mooz.farm/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-me rounded-xl hover:opacity-90 transition-opacity glow-button"
+              >
+                Enter the Staking Portal
+                <svg
+                  className="ml-2 h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* StatsSection */}
         <section id="StatsSection">
   <StatsSection />
@@ -203,7 +271,7 @@ export default function Home() {
         {/* Roadmap Section */}
         <section id="roadmap" className="py-20 bg-navy-900">
           <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Roadmap</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Mooz Roadmap 1.2</h2>
             <div className="relative max-w-4xl mx-auto">
               {/* Vertical line */}
               <div className="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-navy-800"></div>
@@ -212,24 +280,59 @@ export default function Home() {
               <div className="space-y-12">
                 {[
                   {
-                    phase: "Phase 1",
-                    title: "Launch",
-                    description: "Initial mint of 3,333 cows and community building",
+                    phase: "✅ 10%",
+                    title: "Paying Back Our Moms",
+                    description: "Our OG backers were the ones who made this possible. Mission accomplished! (Shoutout to Gordo & Garga for the reminder back in '21).",
                   },
                   {
-                    phase: "Phase 2",
-                    title: "Farm Expansion",
-                    description: "Launch of farm land NFTs and staking mechanics",
+                    phase: "✅ 20%",
+                    title: "Pasture of Renewal Opens",
+                    description: "The V1 to V2 transition is complete! The Pasture of Renewal allowed Cool Cows to evolve into their new forms, unlocking fresh designs and perks.",
                   },
                   {
-                    phase: "Phase 3",
-                    title: "Breeding",
-                    description: "Introduce cow breeding mechanics to create new unique cows",
+                    phase: "✅ 30%",
+                    title: "Herd Radio: Your Soundtrack to Adventure",
+                    description: "The airwaves of Moo-via are alive! Herd Radio is now streaming, bringing music, lore, and community-driven content to every adventurer.",
                   },
                   {
-                    phase: "Phase 4",
-                    title: "Metaverse Integration",
-                    description: "MOOZ Cows enter the metaverse with 3D models",
+                    phase: "🔄 40%",
+                    title: "The Quest Begins – Find the Rare Ones",
+                    description: "The hunt for legendary 1:1 Cool Cows is coming soon! Hidden treasures await those who decipher the clues scattered across Moo-via Commons.",
+                  },
+                  {
+                    phase: "🔄 50%",
+                    title: "Moo-via Commons Unveiling",
+                    description: "The history of Moo-via is being revealed one page at a time! A new page drops every week, unraveling the founding of the kingdom.",
+                  },
+                  {
+                    phase: "🔜 60%",
+                    title: "Noggles Pasture – Where Legends Graze",
+                    description: "A special sanctuary for cows with Nouns-inspired traits is opening soon! Exclusive perks await, because being legendary has its benefits.",
+                  },
+                  {
+                    phase: "🔜 70%",
+                    title: "Merch Alert: Cattle Cart Bazaar",
+                    description: "The Cattle Cart Bazaar is nearly here! Soon, you'll be able to rep your favorite factions in style with Cool Cows merch.",
+                  },
+                  {
+                    phase: "🌱 80%",
+                    title: "The Grazing Grounds",
+                    description: "Our grazing mechanism is still in development, but the reward system is already worked out! Think of it as tenderly grooming the pastures before the herd arrives.",
+                  },
+                  {
+                    phase: "🔜 90%",
+                    title: "Paying Our Starving Artists",
+                    description: "The Cool Cows art team (looking at you, @FastFrogStudio) is finally getting their due! No more exposure payments—only well-earned rewards.",
+                  },
+                  {
+                    phase: "🔜 100%",
+                    title: "Game Teasers Begin",
+                    description: "The first sneak peeks of Kingdoms of Moo-via are coming! Early previews will showcase the game world, strategy mechanics, and maybe even a few surprises.",
+                  },
+                  {
+                    phase: "🎉 BONUS",
+                    title: "The Creation of @HighlanderDAO",
+                    description: "One of the coolest things about Cool Cows is seeing community-led initiatives thrive! This grassroots effort by passionate holders is a great example of how the Cool Cows ecosystem grows organically.",
                   },
                 ].map((item, i) => (
                   <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
