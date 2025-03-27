@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,10 +8,21 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="mb-6 md:mb-0">
-            <h3 className="text-xl font-bold gradient-text mb-4">MOOZ Collection</h3>
-            <p className="text-gray-400 max-w-md">
-              A unique NFT collection on the SEI blockchain featuring exclusive digital artwork.
-            </p>
+            <a 
+              href="https://x.com/d_misios" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            >
+              <Image
+                src="/images/misios_logo.png"
+                alt="MISIOS Logo"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+              <span className="text-lg font-bold gradient-text tracking-wide">Built by MISIOS</span>
+            </a>
           </div>
           
           <div>

@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "./components/ui/button"
 import { Twitter, DiscIcon as Discord, ShoppingCart } from "lucide-react"
 import NavLink from "./components/NavLink"
 import { useEffect, useState } from 'react';
@@ -133,9 +133,12 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Featured Cows 1/1</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {[...Array(8)].map((_, i) => (
-                <div
+                <a
                   key={i}
-                  className="bg-navy-800 rounded-xl overflow-hidden border border-navy-700 transition-transform hover:scale-105"
+                  href={`https://magiceden.io/item-details/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd/${i}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block bg-navy-800 rounded-xl overflow-hidden border border-navy-700 transition-transform hover:scale-105 cursor-pointer"
                 >
                   <div className="relative aspect-square">
                     <Image
@@ -148,7 +151,7 @@ export default function Home() {
                   <div className="p-4">
                     <h3 className="font-bold text-white">1/1 MOOZ #{i + 1}</h3>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -175,7 +178,7 @@ export default function Home() {
               </p>
               <div className="prose prose-invert mx-auto mb-10">
                 <p className="text-lg text-navy-300">
-                  Lock your $MOOZ in the Kingdom's Vault and watch your loyalty bloom into riches. 
+                  Lock your MOOZ NFT in the Kingdom's Vault and watch your loyalty bloom into riches. 
                   Earn passive $MOOZ rewards while fortifying Moovia's future — your tokens power the realm!
                 </p>
                 <div className="my-8 p-6 bg-navy-900/50 rounded-xl border border-navy-800 glow-border">
@@ -455,7 +458,7 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-me">
+        <section className="py-20 bg-gradient-to-r from-[#FF3366] to-[#FF9933]">
           <div className="container text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Join the Farm?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-10 text-white/90">
@@ -467,13 +470,13 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="bg-navy-950 text-white hover:bg-navy-900 text-lg px-8 py-6">
+                <Button className="bg-[#020B2D] text-white hover:bg-[#1A215E] text-lg px-8 py-6 rounded-lg font-medium">
                   <ShoppingCart className="mr-2 h-5 w-5" />
                   Buy on Marketplace
                 </Button>
               </a>
               <a href="https://discord.com/invite/WWBJYYkYt2" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-navy-950 text-white hover:bg-navy-900 text-lg px-8 py-6">
+                <Button className="bg-[#020B2D] text-white hover:bg-[#1A215E] text-lg px-8 py-6 rounded-lg font-medium">
                   <Discord className="mr-2 h-5 w-5" />
                   Join Discord
                 </Button>
