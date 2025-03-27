@@ -469,14 +469,26 @@ export default function Home() {
                 href="https://magiceden.io/collections/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
-                <Button className="bg-[#020B2D] text-white hover:bg-[#1A215E] text-lg px-8 py-6 rounded-lg font-medium">
+                <Button 
+                  variant="default"
+                  className="!bg-[#020B2D] hover:!bg-[#1A215E] !text-white w-full sm:w-auto text-lg px-8 py-6 rounded-lg font-medium transition-colors"
+                >
                   <ShoppingCart className="mr-2 h-5 w-5" />
                   Buy on Marketplace
                 </Button>
               </a>
-              <a href="https://discord.com/invite/WWBJYYkYt2" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#020B2D] text-white hover:bg-[#1A215E] text-lg px-8 py-6 rounded-lg font-medium">
+              <a 
+                href="https://discord.com/invite/WWBJYYkYt2" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button 
+                  variant="default"
+                  className="!bg-[#020B2D] hover:!bg-[#1A215E] !text-white w-full sm:w-auto text-lg px-8 py-6 rounded-lg font-medium transition-colors"
+                >
                   <Discord className="mr-2 h-5 w-5" />
                   Join Discord
                 </Button>
