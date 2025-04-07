@@ -290,7 +290,7 @@ export default function Home() {
                   {
                     phase: "✅ 20%",
                     title: "Pasture of Renewal Opens",
-                    description: "The V1 to V2 transition is complete! The Pasture of Renewal allowed Cool Cows to evolve into their new forms, unlocking fresh designs and perks.",
+                    description: "The V1 to V2 transition is complete! The Pasture of Renewal allowed Cool Cows to evolve into MOOZ and their new forms, unlocking fresh designs and perks.",
                   },
                   {
                     phase: "✅ 30%",
@@ -300,7 +300,7 @@ export default function Home() {
                   {
                     phase: "🔄 40%",
                     title: "The Quest Begins – Find the Rare Ones",
-                    description: "The hunt for legendary 1:1 Cool Cows is coming soon! Hidden treasures await those who decipher the clues scattered across Moo-via Commons.",
+                    description: "The hunt for legendary 1:1 MOOZ is coming soon! Hidden treasures await those who decipher the clues scattered across Moo-via Commons.",
                   },
                   {
                     phase: "🔄 50%",
@@ -315,7 +315,7 @@ export default function Home() {
                   {
                     phase: "🔜 70%",
                     title: "Merch Alert: Cattle Cart Bazaar",
-                    description: "The Cattle Cart Bazaar is nearly here! Soon, you'll be able to rep your favorite factions in style with Cool Cows merch.",
+                    description: "The Cattle Cart Bazaar is nearly here! Soon, you'll be able to rep your favorite factions in style with MOOZ merch.",
                   },
                   {
                     phase: "🌱 80%",
@@ -325,7 +325,7 @@ export default function Home() {
                   {
                     phase: "🔜 90%",
                     title: "Paying Our Starving Artists",
-                    description: "The Cool Cows art team (looking at you, @FastFrogStudio) is finally getting their due! No more exposure payments—only well-earned rewards.",
+                    description: "The MOOZ art team (looking at you, @FastFrogStudio) is finally getting their due! No more exposure payments—only well-earned rewards.",
                   },
                   {
                     phase: "🔜 100%",
