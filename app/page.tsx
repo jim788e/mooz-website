@@ -335,7 +335,7 @@ export default function Home() {
                   {
                     phase: "🎉 BONUS",
                     title: "The Creation of @HighlanderDAO",
-                    description: "One of the coolest things about Cool Cows is seeing community-led initiatives thrive! This grassroots effort by passionate holders is a great example of how the Cool Cows ecosystem grows organically.",
+                    description: "One of the coolest things about MOOZ family is seeing community-led initiatives thrive! This grassroots effort by passionate holders is a great example of how the MOOZ ecosystem grows organically.",
                   },
                 ].map((item, i) => (
                   <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
