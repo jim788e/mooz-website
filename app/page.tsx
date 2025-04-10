@@ -131,8 +131,8 @@ export default function Home() {
         <section id="collection" className="py-20 bg-navy-900">
           <div className="container">
             <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Featured Cows 1/1</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {[...Array(8)].map((_, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6"> {/* Adjusted grid columns for 4 items */}
+              {[0, 1, 2, 4].map((i) => ( // Explicitly list the desired cow indices
                 <a
                   key={i}
                   href={`https://magiceden.io/item-details/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd/${i}`}
@@ -143,7 +143,7 @@ export default function Home() {
                   <div className="relative aspect-square">
                     <Image
                       src={`/images/cows/${i}.png`}
-                      alt={`Cow NFT #${i + 1}`}
+                      alt={`Cow NFT #${i + 1}`} // Keep alt text as #i+1 for user-facing number
                       fill
                       className="object-cover"
                     />
@@ -153,6 +153,69 @@ export default function Home() {
                   </div>
                 </a>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Marketplace & Sales Tracker Section */}
+        <section id="marketplace" className="py-20 bg-navy-950">
+          <div className="container">
+            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Marketplace & Sales</h2>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Sales Tracker Column */}
+              <div className="flex flex-col items-center md:items-start text-center md:text-left"> {/* Added flex, items-center, md:items-start, text-center, md:text-left */}
+                <h3 className="text-2xl font-bold text-white mb-6">Track MOOZ Sales on X</h3>
+                <div className="relative h-[300px] w-full max-w-sm rounded-xl overflow-hidden mb-6"> {/* Added w-full max-w-sm for better image sizing */}
+                  <Image
+                    src="/images/sales/sales.jpg"
+                    alt="MOOZ Sales Tracker Announcement"
+                    fill
+                    className="object-contain" /* Use object-contain to show the whole image */
+                  />
+                </div>
+                <p className="text-navy-300 mb-4">
+                  Follow our dedicated X account for real-time updates on MOOZ sales activity!
+                </p>
+                <a
+                  href="https://x.com/MOOZSALES"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="text-white border-navy-700 hover:bg-navy-800">
+                    <Twitter className="mr-2 h-4 w-4" />
+                    Follow @MOOZSALES
+                  </Button>
+                </a>
+              </div>
+              {/* Magic Eden Column (Simplified) with Background */}
+              <div className="relative flex flex-col items-center md:items-start text-center md:text-left p-8 rounded-xl overflow-hidden bg-cover bg-center bg-[url('/images/marketplace/marketplace-preview.jpg')]">
+                {/* Overlay for text readability */}
+                <div className="absolute inset-0 bg-navy-950/70 z-0 rounded-xl"></div>
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-center md:items-start w-full">
+                  <Image
+                      src="/images/marketplace/magic-eden.webp"
+                      alt="Magic Eden Logo"
+                      width={60}
+                      height={60}
+                      className="mb-4"
+                    />
+                <h3 className="text-2xl font-bold text-white mb-4">Available on Magic Eden</h3>
+                <p className="text-navy-300 mb-6">
+                  Purchase MOOZ Cows on the official secondary marketplace.
+                </p>
+                <a
+                  href="https://magiceden.io/collections/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-gradient-me hover:opacity-90 text-white">
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    View Listings
+                  </Button>
+                </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -497,52 +560,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Marketplace Section */}
-        <section id="marketplace" className="py-20 bg-navy-950">
-          <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Where to Buy</h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative h-[400px] rounded-xl overflow-hidden">
-                <Image
-                  src="/images/marketplace/marketplace-preview.jpg"
-                  alt="NFT Marketplace"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-6">Available on Magic Eden</h3>
-                <p className="text-navy-300 mb-4">
-                  MOOZ Cows are fully minted and can be purchased exclusively on Magic Eden marketplace:
-                </p>
-                <ul className="space-y-4 mb-6">
-                  <li className="flex items-center gap-4 text-navy-300">
-                    <Image
-                      src="/images/marketplace/magic-eden.webp"
-                      alt="Magic Eden"
-                      width={24}
-                      height={24}
-                      className="h-6 w-6"
-                    />
-                    <span>Magic Eden SEI Marketplace</span>
-                  </li>
-                </ul>
-                <a
-                  href="https://magiceden.io/collections/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="bg-gradient-me hover:opacity-90 text-white">
-                    <ShoppingCart className="mr-2 h-4 w-4" />
-                    View Listings
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   )
 }
-

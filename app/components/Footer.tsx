@@ -43,20 +43,18 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-navy-800 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-gray-400">
+          {/* Changed flex-col to flex-row, added flex-wrap, adjusted gap */}
+          <div className="flex flex-row flex-wrap justify-center gap-x-6 gap-y-2 md:gap-x-8 text-sm text-gray-400">
             <Link href="/terms" className="hover:text-secondary transition-colors">
               Terms & Conditions
             </Link>
-            <li>
-              <Link href="/terms/staking" className="text-gray-400 hover:text-white transition">
-                Staking Terms
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="text-gray-400 hover:text-white transition">
-                Privacy Policy
-              </Link>
-            </li>
+            {/* Removed <li> tags */}
+            <Link href="/terms/staking" className="hover:text-secondary transition-colors">
+              Staking Terms
+            </Link>
+            <Link href="/privacy" className="hover:text-secondary transition-colors">
+              Privacy Policy
+            </Link>
             <a href="mailto:contact@moozcollection.io" className="hover:text-secondary transition-colors">
               Contact Us
             </a>
@@ -68,4 +66,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}
