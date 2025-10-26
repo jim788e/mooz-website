@@ -21,7 +21,7 @@ export default function Footer() {
                 height={32}
                 className="rounded-full"
               />
-              <span className="text-lg font-bold gradient-text tracking-wide">Built by MISIOS</span>
+              <span className="text-lg font-bold gradient-text tracking-wide">by MISIOS</span>
             </a>
           </div>
           
