@@ -15,7 +15,8 @@ export default function StatsSection() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   const fetchStats = async () => {
     try {
@@ -26,10 +27,17 @@ export default function StatsSection() {
         setStats(data.data);
         setError(null);
       } else {
-        setError(data.error || 'Failed to fetch stats');
+        const errorMsg = data.error || 'Failed to fetch stats';
+        setError(errorMsg);
+        // Still set stats from error fallback if available
+        if (data.data) {
+          setStats(data.data);
+        }
       }
     } catch (err) {
-      setError('Failed to fetch stats');
+      const errorMsg = err instanceof Error ? err.message : 'Failed to fetch stats';
+      setError(errorMsg);
+      console.error('Stats fetch error:', err);
     } finally {
       setLoading(false);
       setLastUpdated(new Date());
@@ -37,6 +45,8 @@ export default function StatsSection() {
   };
 
   useEffect(() => {
+    // Mark component as mounted to avoid hydration mismatch
+    setMounted(true);
     fetchStats();
     const interval = setInterval(fetchStats, 60000);
     return () => clearInterval(interval);
@@ -49,8 +59,10 @@ export default function StatsSection() {
     return num.toFixed(2);
   };
 
-  const getTimeSince = (date: Date) => {
-    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+  const getTimeSince = (date: Date | null) => {
+    if (!date || !mounted) return 'Just now';
+    const now = new Date();
+    const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
     if (seconds < 60) return `${seconds} seconds ago`;
     const minutes = Math.floor(seconds / 60);
     return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
@@ -99,8 +111,19 @@ export default function StatsSection() {
         </div>
       </div>
 
+      {error && (
+        <div className="text-center mt-4 text-red-400 text-sm">
+          Error: {error}
+        </div>
+      )}
       <div className="text-center mt-4 text-sm text-gray-400">
-        Last updated: {getTimeSince(lastUpdated)}
+        {loading ? 'Loading stats...' : mounted && lastUpdated ? (
+          `Last updated: ${getTimeSince(lastUpdated)}`
+        ) : mounted ? (
+          'Last updated: Just now'
+        ) : (
+          'Loading stats...'
+        )}
         <div className="mt-2">
           <a
             href="https://magiceden.io/sei/marketplace/mooz"

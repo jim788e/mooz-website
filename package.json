@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:api": "node test-magic-eden-api.js"
   },
   "dependencies": {
     "@flipsidecrypto/sdk": "^2.1.0",

@@ -1,51 +1,64 @@
-class TallalTest {
+class MagicEdenAPI {
   private apiKey: string = '';
-  private baseUrl: string = '';
+  private readonly baseUrl: string = 'https://api-mainnet.magiceden.dev';
 
   auth(token: string) {
     this.apiKey = token;
   }
 
-  server(url: string) {
-    this.baseUrl = url;
+  async getCollectionsV4(params: {
+    collectionIds: string[];
+    chain: string;
+  }) {
+    const url = `${this.baseUrl}/v4/collections`;
+    const body = {
+      chain: params.chain,
+      collectionIds: params.collectionIds
+    };
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'accept': '*/*',
+        'content-type': 'application/json',
+        'Authorization': this.apiKey,
+      },
+      body: JSON.stringify(body),
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`API error: ${response.status} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    return { data };
   }
 
-  async getCollectionsV7(params: {
-    id: string;
-    includeMintStages?: string;
-    includeSecurityConfigs?: string;
-    normalizeRoyalties?: string;
-    useNonFlaggedFloorAsk?: string;
-    sortBy?: string;
-    limit?: string;
-    chain?: string;
-    accept?: string;
+  async getAttributeStats(params: {
+    collectionId: string;
+    chain: string;
   }) {
-    try {
-      const url = `${this.baseUrl}/${params.chain}/collections/v7?id=${params.id}`;
-      console.log('Fetching from URL:', url);
+    const url = `${this.baseUrl}/v4/collections/attribute_stats?chain=${params.chain}&collectionId=${params.collectionId}`;
 
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Authorization': this.apiKey,
-          'Accept': params.accept || '*/*',
-        },
-        cache: 'no-store'
-      });
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'accept': '*/*',
+        'Authorization': this.apiKey,
+      },
+      cache: 'no-store'
+    });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return { data };
-    } catch (error) {
-      console.error('API request failed:', error);
-      throw error;
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`API error: ${response.status} - ${errorText}`);
     }
+
+    const data = await response.json();
+    return { data };
   }
 }
 
-const tallalTest = new TallalTest();
-export default tallalTest; 
+export default MagicEdenAPI; 
