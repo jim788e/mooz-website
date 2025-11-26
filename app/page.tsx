@@ -2,10 +2,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./components/ui/button"
-import { Twitter, DiscIcon as Discord, ShoppingCart, ArrowRight, Sparkles } from "lucide-react"
+import { ShoppingCart, ArrowRight, Sparkles, Menu, X, Twitter, DiscIcon as Discord, ChevronDown, HelpCircle, ArrowRightCircle, Coins, MessageCircle } from "lucide-react"
 import NavLink from "./components/NavLink"
+import { useState } from "react"
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [openMigrationIndex, setOpenMigrationIndex] = useState<number | null>(null);
 
   return (
     <div className="flex flex-col min-h-screen bg-navy-950">
@@ -42,6 +46,8 @@ export default function Home() {
               className="object-contain"
             />
           </div>
+          
+          {/* Desktop Navigation - Top Right */}
           <nav className="hidden md:flex items-center gap-6">
             {[
               { href: "#about", label: "About" },
@@ -66,27 +72,51 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-4">
-            <Link href="https://x.com/MoozNft" target="_empty" aria-label="Twitter">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full text-white hover:text-secondary hover:bg-navy-800"
-              >
-                <Twitter className="h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href="https://discord.com/invite/WWBJYYkYt2" target="_blank" aria-label="Discord">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full text-white hover:text-secondary hover:bg-navy-800"
-              >
-                <Discord className="h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:text-secondary transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-navy-800 bg-navy-950/95 backdrop-blur-sm">
+            <nav className="container py-4 flex flex-col gap-4">
+              {[
+                { href: "#about", label: "About" },
+                { 
+                  href: "#staking", 
+                  label: (
+                    <span className="glow-text-green relative inline-block">
+                      Staking
+                    </span>
+                  )
+                },
+                { href: "#roadmap", label: "Roadmap" },
+                { href: "#team", label: "Team" }, 
+                
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white hover:text-secondary transition-colors py-2 text-lg"
+                >
+                  {typeof link.label === 'string' ? link.label : link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
       <main className="flex-1">
@@ -345,14 +375,9 @@ export default function Home() {
                     description: "Our grazing mechanism is still in development, but the reward system is already worked out! Think of it as tenderly grooming the pastures before the herd arrives.",
                   },
                   {
-                    phase: "🔜 90%",
+                    phase: "✅ 90%",
                     title: "Paying Our Starving Artists",
-                    description: "The MOOZ art team (looking at you, @FastFrogStudio) is finally getting their due! No more exposure payments—only well-earned rewards.",
-                  },
-                  {
-                    phase: "🔜 100%",
-                    title: "Game Teasers Begin",
-                    description: "The first sneak peeks of Kingdoms of Moo-via are coming! Early previews will showcase the game world, strategy mechanics, and maybe even a few surprises.",
+                    description: "The MOOZ art team (looking at you, @FastFrogStudio) is finally getting their due! No more exposure payments—only well-earned rewards. Mission accomplished!",
                   },
                   {
                     phase: "🎉 BONUS",
@@ -477,37 +502,204 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-navy-900">
-          <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">
-              Frequently Asked Questions
-            </h2>
-            <div className="max-w-3xl mx-auto space-y-6">
-              {[
-                {
-                  question: "What blockchain are MOOZ Cows on?",
-                  answer: "MOOZ Cows are on the SEI blockchain, providing fast transactions and low gas fees.",
-                },
-                {
-                  question: "How many cows are in the collection?",
-                  answer: "There are a total of 3333 unique MOOZ Cows in the collection.",
-                },
-                {
-                  question: "How do I purchase a MOOZ Cow?",
-                  answer:
-                    "The collection is already fully minted. You can purchase MOOZ Cows on Magic Eden marketplace.",
-                },
-                {
-                  question: "What are the benefits of owning a MOOZ Cow?",
-                  answer:
-                    "Owners get access to exclusive community events, future airdrops, and will be able to participate in the breeding and farming mechanics.",
-                },
-              ].map((faq, i) => (
-                <div key={i} className="bg-navy-800 rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">{faq.question}</h3>
-                  <p className="text-navy-300">{faq.answer}</p>
+        <section className="py-20 bg-navy-900 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-me rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="container relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-navy-300 text-lg max-w-2xl mx-auto">
+                Everything you need to know about MOOZ and the migration to Ethereum
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-12">
+              {/* Migration FAQ Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <ArrowRightCircle className="h-6 w-6 text-secondary" />
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">Migration to Ethereum</h3>
                 </div>
-              ))}
+                <div className="space-y-4">
+                  {[
+                    {
+                      category: "General",
+                      icon: HelpCircle,
+                      questions: [
+                        {
+                          q: "Why is the migration happening?",
+                          a: "We're moving MOOZ to a new blockchain for a stronger, more reliable foundation, improved opportunities, and a better long-term experience for our holders."
+                        },
+                        {
+                          q: "What chain is MOOZ migrating to?",
+                          a: "The collection is migrating to Ethereum, chosen for its security, liquidity, and infrastructure. The new supply on ETH will be 2,555."
+                        }
+                      ]
+                    },
+                    {
+                      category: "Migration Process",
+                      icon: ArrowRightCircle,
+                      questions: [
+                        {
+                          q: "Do I need to unstake my NFTs?",
+                          a: "Yes, please unstake all NFTs before staking rewards stop on December 1."
+                        },
+                        {
+                          q: "How do I claim my new NFTs?",
+                          a: "Starting December 8, burn your SEI NFT using our burn2claim process to receive your new Ethereum NFT."
+                        },
+                        {
+                          q: "Can I migrate manually?",
+                          a: "Yes! Until burn2claim is live, you can request a manual migration via ticket. Our dev @misios.sol will help with the process."
+                        },
+                        {
+                          q: "What happens if I don't migrate my NFTs?",
+                          a: "Remaining NFTs on SEI will lose utility and may be delisted. Future upgrades and utilities will only be available on the new chain."
+                        },
+                        {
+                          q: "Will there be fees to migrate?",
+                          a: "Your ETH gas fees for claiming will be covered by us! You only need to pay the SEI transaction fee for the burn2claim process."
+                        }
+                      ]
+                    },
+                    {
+                      category: "Rewards and Tokens",
+                      icon: Coins,
+                      questions: [
+                        {
+                          q: "Will I still earn $MOOZ rewards?",
+                          a: "Vaults will continue to operate for $MOOZ token on Sei after migration. New $MOOZ earnings will also connect with Cool Cows Labs."
+                        },
+                        {
+                          q: "Will royalties change during migration?",
+                          a: "Yes, royalties will be increased to discourage new sales and encourage holders to migrate their NFTs."
+                        }
+                      ]
+                    },
+                    {
+                      category: "Troubleshooting and Support",
+                      icon: MessageCircle,
+                      questions: [
+                        {
+                          q: "What should I do if there is a problem during migration?",
+                          a: "Contact the team in #migration-questions or open a support ticket for assistance. We're here to help you through every step."
+                        },
+                        {
+                          q: "Is the migration safe and secure?",
+                          a: "Yes, the migration process follows industry best practices to ensure your NFT is safely minted on Ethereum when you burn your old SEI NFT."
+                        }
+                      ]
+                    }
+                  ].map((category, catIndex) => (
+                    <div key={catIndex} className="mb-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <category.icon className="h-5 w-5 text-secondary" />
+                        <h4 className="text-lg font-semibold text-secondary">{category.category}</h4>
+                      </div>
+                      <div className="space-y-3">
+                        {category.questions.map((item, qIndex) => {
+                          const index = catIndex * 10 + qIndex;
+                          const isOpen = openMigrationIndex === index;
+                          return (
+                            <div
+                              key={qIndex}
+                              className="bg-gradient-to-br from-navy-800 to-navy-800/50 rounded-xl border border-navy-700/50 overflow-hidden transition-all duration-300 hover:border-secondary/50"
+                            >
+                              <button
+                                onClick={() => setOpenMigrationIndex(isOpen ? null : index)}
+                                className="w-full px-6 py-4 flex items-center justify-between text-left group"
+                              >
+                                <span className="text-white font-semibold pr-4 group-hover:text-secondary transition-colors">
+                                  {item.q}
+                                </span>
+                                <ChevronDown
+                                  className={`h-5 w-5 text-navy-400 flex-shrink-0 transition-transform duration-300 ${
+                                    isOpen ? 'rotate-180 text-secondary' : ''
+                                  }`}
+                                />
+                              </button>
+                              <div
+                                className={`overflow-hidden transition-all duration-300 ${
+                                  isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                                }`}
+                              >
+                                <div className="px-6 pb-4">
+                                  <p className="text-navy-300 leading-relaxed">{item.a}</p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* General FAQ Section */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <HelpCircle className="h-6 w-6 text-secondary" />
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">General Questions</h3>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    {
+                      question: "What blockchain are MOOZ Cows on?",
+                      answer: "MOOZ Cows are currently on the SEI blockchain, providing fast transactions and low gas fees. We're migrating to Ethereum for enhanced security, liquidity, and infrastructure. The migration process is now underway."
+                    },
+                    {
+                      question: "How many cows are in the collection?",
+                      answer: "There are a total of 3,333 unique MOOZ Cows in the collection on SEI. After migration to Ethereum, the new supply will be 2,555."
+                    },
+                    {
+                      question: "How do I purchase a MOOZ Cow?",
+                      answer: "The collection is already fully minted. You can purchase MOOZ Cows on Magic Eden marketplace. After migration, the collection will be available on Ethereum-based marketplaces."
+                    },
+                    {
+                      question: "What are the benefits of owning a MOOZ Cow?",
+                      answer: "Owners get access to exclusive community events, future airdrops, staking rewards, and will be able to participate in the breeding and farming mechanics. All utilities will continue on Ethereum after migration."
+                    }
+                  ].map((faq, i) => {
+                    const isOpen = openFaqIndex === i;
+                    return (
+                      <div
+                        key={i}
+                        className="bg-gradient-to-br from-navy-800 to-navy-800/50 rounded-xl border border-navy-700/50 overflow-hidden transition-all duration-300 hover:border-secondary/50"
+                      >
+                        <button
+                          onClick={() => setOpenFaqIndex(isOpen ? null : i)}
+                          className="w-full px-6 py-4 flex items-center justify-between text-left group"
+                        >
+                          <span className="text-white font-semibold pr-4 group-hover:text-secondary transition-colors">
+                            {faq.question}
+                          </span>
+                          <ChevronDown
+                            className={`h-5 w-5 text-navy-400 flex-shrink-0 transition-transform duration-300 ${
+                              isOpen ? 'rotate-180 text-secondary' : ''
+                            }`}
+                          />
+                        </button>
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ${
+                            isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                          }`}
+                        >
+                          <div className="px-6 pb-4">
+                            <p className="text-navy-300 leading-relaxed">{faq.answer}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </section>
