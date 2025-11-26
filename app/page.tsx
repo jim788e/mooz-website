@@ -234,24 +234,36 @@ export default function Home() {
                 Claim Your Royal Rewards
               </p>
               <div className="prose prose-invert mx-auto mb-10">
-                <p className="text-lg text-navy-300">
+                <p className="text-lg text-navy-300 mb-6">
                   Lock your MOOZ NFT in the Kingdom's Vault and watch your loyalty bloom into riches. 
                   Earn passive $MOOZ rewards while fortifying Moovia's future — your tokens power the realm!
                 </p>
+                
+                {/* Important Notice */}
+                <div className="my-6 p-4 bg-secondary/10 border border-secondary/30 rounded-xl">
+                  <p className="text-sm text-navy-200 text-center">
+                    <span className="font-semibold text-secondary">⚠️ Important:</span> NFT staking rewards will pause on <span className="font-bold text-white">December 1st</span>. 
+                    Vaults will continue operating, and $MOOZ tokens will power our new <a href="https://x.com/CoolCowsLab" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-secondary/80 underline">Cool Cows Lab</a>!
+                  </p>
+                </div>
+
                 <div className="my-8 p-6 bg-navy-900/50 rounded-xl border border-navy-800 glow-border">
                   <h3 className="text-xl font-bold text-white mb-6 text-center animate-pulse-slow">The Crown's Command:</h3>
                   <ul className="text-navy-300 space-y-6 list-none p-0 m-0">
-                    <li className="flex items-center justify-center text-lg glow-text-green">
-                      <span>✨ Stake your MOOZ NFT</span>
-                    </li>
                     <li className="flex items-center justify-center text-lg">
-                      <span className="glow-text-blue">💎 Trade with cunning</span>
-                      <span className="ml-2 px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-full animate-pulse">
-                        Soon
+                      <span className="glow-text-green">✨ Stake your MOOZ NFT</span>
+                      <span className="ml-2 px-2 py-0.5 bg-navy-800 text-navy-300 text-xs rounded-full">
+                        Until Dec 1
                       </span>
                     </li>
-                    <li className="flex items-center justify-center text-lg glow-text-gold">
-                      <span>👑 Dominate the game</span>
+                    <li className="flex items-center justify-center text-lg glow-text-green">
+                      <span>💰 Stake $MOOZ tokens in Vaults to earn WSEI</span>
+                      <span className="ml-2 px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-full animate-pulse">
+                        Ongoing
+                      </span>
+                    </li>
+                    <li className="flex items-center justify-center text-lg glow-text-blue">
+                      <span>🔬 $MOOZ powers <a href="https://x.com/CoolCowsLab" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Cool Cows Lab</a></span>
                     </li>
                   </ul>
                 </div>
@@ -259,28 +271,52 @@ export default function Home() {
                   The throne awaits those who seize the moment. Will you rule?
                 </p>
               </div>
-              <a
-                href="https://grazing.mooz.farm/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-me rounded-xl hover:opacity-90 transition-opacity glow-button"
-              >
-                Enter the Staking Portal
-                <svg
-                  className="ml-2 h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a
+                  href="https://grazing.mooz.farm/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-me rounded-xl hover:opacity-90 transition-opacity glow-button"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </a>
+                  Enter the Staking Portal
+                  <svg
+                    className="ml-2 h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://grazing.mooz.farm/vaults"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-navy-800 border border-secondary/50 rounded-xl hover:bg-navy-700 hover:border-secondary transition-all glow-button"
+                >
+                  View Vaults
+                  <svg
+                    className="ml-2 h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -365,14 +401,9 @@ export default function Home() {
                     description: "A special sanctuary for cows with Nouns-inspired traits is opening soon! Exclusive perks await, because being legendary has its benefits.",
                   },
                   {
-                    phase: "🔜 70%",
-                    title: "Merch Alert: Cattle Cart Bazaar",
-                    description: "The Cattle Cart Bazaar is nearly here! Soon, you'll be able to rep your favorite factions in style with MOOZ merch.",
-                  },
-                  {
-                    phase: "🌱 80%",
-                    title: "The Grazing Grounds",
-                    description: "Our grazing mechanism is still in development, but the reward system is already worked out! Think of it as tenderly grooming the pastures before the herd arrives.",
+                    phase: "✅ 80%",
+                    title: "The Grazing Grounds & Vaults",
+                    description: "Staking and grazing are now LIVE! Stake your MOOZ NFTs to earn rewards, and use our Vaults system to stake $MOOZ tokens and earn WSEI. Visit grazing.mooz.farm to start earning!",
                   },
                   {
                     phase: "✅ 90%",
