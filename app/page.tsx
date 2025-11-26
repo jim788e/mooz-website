@@ -2,40 +2,36 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./components/ui/button"
-import { Twitter, DiscIcon as Discord, ShoppingCart } from "lucide-react"
+import { Twitter, DiscIcon as Discord, ShoppingCart, ArrowRight, Sparkles } from "lucide-react"
 import NavLink from "./components/NavLink"
-import { useEffect, useState } from 'react';
-import StatsSection from './components/StatsSection';
 
 export default function Home() {
-  const [stats, setStats] = useState({
-    volume: 'XXX,XXX',
-    floorPrice: 'XX',
-    holders: 'X,XXX'
-  });
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const response = await fetch('/api/stats');
-        const data = await response.json();
-        setStats({
-          volume: data.volume,
-          floorPrice: data.floorPrice,
-          holders: data.holders
-        });
-      } catch (error) {
-        console.error('Failed to fetch stats:', error);
-      }
-    };
-
-    fetchStats();
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-navy-950">
+      {/* ETH Migration Banner */}
+      <a
+        href="https://x.com/MoozNft/status/1992316014093271447?s=20"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative z-50 w-full bg-gradient-to-r from-secondary/20 via-secondary/30 to-secondary/20 border-b border-secondary/30 hover:from-secondary/30 hover:via-secondary/40 hover:to-secondary/30 transition-all duration-300 group"
+      >
+        <div className="container mx-auto px-4 py-2.5">
+          <div className="flex items-center justify-center gap-3 text-sm md:text-base">
+            <Sparkles className="h-4 w-4 text-secondary animate-pulse" />
+            <span className="text-white font-medium">
+              <span className="text-secondary font-bold">MOOZ is migrating to Ethereum!</span>
+              <span className="text-navy-200 ml-2">Learn more about this exciting expansion</span>
+            </span>
+            <ArrowRight className="h-4 w-4 text-secondary group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+      </a>
+
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full bg-navy-950/80 backdrop-blur-sm border-b border-navy-800">
+      <header className="sticky top-0 z-40 w-full bg-navy-950/80 backdrop-blur-sm border-b border-navy-800">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
@@ -49,8 +45,6 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-6">
             {[
               { href: "#about", label: "About" },
-              { href: "#collection", label: "Collection" },
-              { href: "#StatsSection", label: "Stats" },
               { 
                 href: "#staking", 
                 label: (
@@ -123,36 +117,6 @@ export default function Home() {
                   Buy on Marketplace
                 </Button>
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured NFTs */}
-        <section id="collection" className="py-20 bg-navy-900">
-          <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Featured Cows 1/1</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6"> {/* Adjusted grid columns for 4 items */}
-              {[0, 1, 2, 4].map((i) => ( // Explicitly list the desired cow indices
-                <a
-                  key={i}
-                  href={`https://magiceden.io/item-details/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd/${i}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block bg-navy-800 rounded-xl overflow-hidden border border-navy-700 transition-transform hover:scale-105 cursor-pointer"
-                >
-                  <div className="relative aspect-square">
-                    <Image
-                      src={`/images/cows/${i}.png`}
-                      alt={`Cow NFT #${i + 1}`} // Keep alt text as #i+1 for user-facing number
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-bold text-white">1/1 MOOZ #{i + 1}</h3>
-                  </div>
-                </a>
-              ))}
             </div>
           </div>
         </section>
@@ -291,11 +255,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* StatsSection */}
-        <section id="StatsSection">
-  <StatsSection />
-</section>
-
         {/* About Section */}
         <section id="about" className="py-20 bg-navy-950">
   <div className="container">
@@ -398,7 +357,12 @@ export default function Home() {
                   {
                     phase: "🎉 BONUS",
                     title: "The Creation of @HighlanderDAO",
-                    description: "One of the coolest things about MOOZ family is seeing community-led initiatives thrive! This grassroots effort by passionate holders is a great example of how the MOOZ ecosystem grows organically.",
+                    description: "One of the coolest things about MOOZ family is seeing community-led initiatives thrive! This grassroots effort by passionate holders is a great example of how the MOOZ ecosystem grows organically. HighlanderDAO empowers the community with governance rights and collaborative decision-making, showcasing the decentralized spirit of the MOOZ family.",
+                  },
+                  {
+                    phase: "🚀 MIGRATION",
+                    title: "Migration to Ethereum",
+                    description: "MOOZ is expanding to Ethereum! This strategic migration enhances scalability, increases liquidity, and opens access to the broader DeFi ecosystem. The move brings MOOZ to a larger user base and enables compatibility with a wide range of dApps and wallets. Learn more about the migration process and its benefits in our official announcement.",
                   },
                 ].map((item, i) => (
                   <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
@@ -423,22 +387,28 @@ export default function Home() {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="py-20 bg-navy-950">
-          <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Meet the Farmers</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <section id="team" className="py-20 bg-navy-950 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-me rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="container relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Meet the Farmers</h2>
+              <p className="text-navy-300 text-lg max-w-2xl mx-auto">
+                The passionate team building the MOOZ ecosystem
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {[
                 {
                   name: "misios",
                   role: "Founder & Dev",
                   image: "/images/team/misios.jpeg",
                   twitter: "https://x.com/d_misios",
-                },
-                {
-                  name: "PsEyecho",
-                  role: "Founder",
-                  image: "/images/team/pseyecho.jpeg",
-                  twitter: "https://x.com/GUTTERSWOLE",
                 },
                 {
                   name: "b1337n",
@@ -449,28 +419,47 @@ export default function Home() {
               ].map((member, i) => (
                 <div
                   key={i}
-                  className="bg-navy-900 rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-navy-900 to-navy-800 rounded-2xl overflow-hidden border border-navy-700/50 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(255,153,51,0.3)]"
                 >
-                  <div className="relative aspect-square">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:to-transparent transition-all duration-300 pointer-events-none"></div>
+                  
+                  <div className="relative aspect-square overflow-hidden">
                     <Image
                       src={member.image}
                       alt={`${member.name}'s profile picture`}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       priority
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"></div>
                   </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                    <p className="text-navy-300 mb-4">{member.role}</p>
-                    <div className="flex justify-center gap-4">
+                  
+                  <div className="p-8 text-center relative">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">
+                        {member.name}
+                      </h3>
+                      <div className="inline-block px-4 py-1.5 bg-navy-800/50 rounded-full border border-navy-700/50">
+                        <p className="text-navy-300 text-sm font-medium">{member.role}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-center">
                       {member.twitter && (
-                        <Link href={member.twitter} target="_blank" aria-label={`${member.name}'s Twitter`}>
+                        <Link 
+                          href={member.twitter} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          aria-label={`${member.name}'s Twitter`}
+                          className="group/social"
+                        >
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="rounded-full text-navy-300 hover:text-secondary hover:bg-navy-800"
+                            className="rounded-full text-navy-400 hover:text-secondary hover:bg-navy-800/50 border border-navy-700/50 hover:border-secondary/50 transition-all duration-300 hover:scale-110"
                           >
                             <Twitter className="h-5 w-5" />
                           </Button>
@@ -478,6 +467,9 @@ export default function Home() {
                       )}
                     </div>
                   </div>
+                  
+                  {/* Corner accent */}
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-secondary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
