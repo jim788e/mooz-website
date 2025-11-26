@@ -138,7 +138,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href="https://magiceden.io/collections/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd"
+                href="https://magiceden.io/collections/ethereum/mooz"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -199,7 +199,7 @@ export default function Home() {
                   Purchase MOOZ Cows on the official secondary marketplace.
                 </p>
                 <a
-                  href="https://magiceden.io/collections/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd"
+                  href="https://magiceden.io/collections/ethereum/mooz"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -744,7 +744,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href="https://magiceden.io/collections/sei/0xce0fee0ac17f37cd66642f0ec8a4675ae7f590dd"
+                href="https://magiceden.io/collections/ethereum/mooz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"

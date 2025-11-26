@@ -8,8 +8,48 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MOOZ - NFT Collection",
-  description: "A unique NFT collection of 3333 digital cows living on the SEI blockchain",
+  title: "MOOZ - NFT Collection | Staking Live | Migrating to Ethereum",
+  description: "A unique NFT collection of 3,333 digital cows. Staking and Vaults are LIVE! Stake MOOZ NFTs or $MOOZ tokens to earn rewards. Migrating to Ethereum for enhanced opportunities.",
+  keywords: ["MOOZ", "NFT", "SEI blockchain", "Ethereum", "staking", "vaults", "MOOZ token", "WSEI", "Cool Cows Lab", "digital collectibles"],
+  authors: [{ name: "MOOZ Team" }],
+  creator: "MOOZ Collection",
+  publisher: "MOOZ Collection",
+  metadataBase: new URL('https://www.mooz.farm'),
+  openGraph: {
+    title: "MOOZ - NFT Collection | Staking Live | Migrating to Ethereum",
+    description: "A unique NFT collection of 3,333 digital cows. Staking and Vaults are LIVE! Stake MOOZ NFTs or $MOOZ tokens to earn rewards. Migrating to Ethereum for enhanced opportunities.",
+    url: 'https://www.mooz.farm',
+    siteName: 'MOOZ',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'MOOZ NFT Collection - Staking Live | Migrating to Ethereum',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "MOOZ - NFT Collection | Staking Live | Migrating to Ethereum",
+    description: "A unique NFT collection of 3,333 digital cows. Staking and Vaults are LIVE! Stake MOOZ NFTs or $MOOZ tokens to earn rewards.",
+    images: ['/images/og-image.png'],
+    creator: '@MoozNft',
+    site: '@MoozNft',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
