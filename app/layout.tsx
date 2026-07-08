@@ -8,16 +8,16 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "MOOZ - NFT Collection | Staking Live | Migrating to Ethereum",
-  description: "A unique NFT collection of 3,333 digital cows. Staking and Vaults are LIVE! Stake MOOZ NFTs or $MOOZ tokens to earn rewards. Migrating to Ethereum for enhanced opportunities.",
-  keywords: ["MOOZ", "NFT", "SEI blockchain", "Ethereum", "staking", "vaults", "MOOZ token", "WSEI", "Cool Cows Lab", "digital collectibles"],
+  title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
+  description: "MOOZ is a flagship NFT collection of 1,700 digital cows on Ethereum. Staking, Vaults, and custom analytics are launching soon on Sei via Cool Cows Lab.",
+  keywords: ["MOOZ", "NFT", "Ethereum", "SEI blockchain", "staking", "vaults", "MOOZ token", "WSEI", "Cool Cows Lab", "digital collectibles"],
   authors: [{ name: "MOOZ Team" }],
   creator: "MOOZ Collection",
   publisher: "MOOZ Collection",
   metadataBase: new URL('https://www.mooz.farm'),
   openGraph: {
-    title: "MOOZ - NFT Collection | Staking Live | Migrating to Ethereum",
-    description: "A unique NFT collection of 3,333 digital cows. Staking and Vaults are LIVE! Stake MOOZ NFTs or $MOOZ tokens to earn rewards. Migrating to Ethereum for enhanced opportunities.",
+    title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
+    description: "MOOZ is a flagship NFT collection of 1,700 digital cows on Ethereum. Staking, Vaults, and custom analytics are launching soon on Sei via Cool Cows Lab.",
     url: 'https://www.mooz.farm',
     siteName: 'MOOZ',
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'MOOZ NFT Collection - Staking Live | Migrating to Ethereum',
+        alt: 'MOOZ NFT Collection - Live on Ethereum | Cool Cows Lab',
       },
     ],
     locale: 'en_US',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "MOOZ - NFT Collection | Staking Live | Migrating to Ethereum",
-    description: "A unique NFT collection of 3,333 digital cows. Staking and Vaults are LIVE! Stake MOOZ NFTs or $MOOZ tokens to earn rewards.",
+    title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
+    description: "MOOZ is a flagship NFT collection of 1,700 digital cows on Ethereum. Staking, Vaults, and custom analytics are launching soon on Sei via Cool Cows Lab.",
     images: ['/images/og-image.png'],
     creator: '@MoozNft',
     site: '@MoozNft',

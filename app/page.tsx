@@ -2,7 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./components/ui/button"
-import { ShoppingCart, ArrowRight, Sparkles, Menu, X, Twitter, DiscIcon as Discord, ChevronDown, HelpCircle, ArrowRightCircle, Coins, MessageCircle } from "lucide-react"
+import { ShoppingCart, ArrowRight, Sparkles, Menu, X, Twitter, DiscIcon as Discord, ChevronDown, HelpCircle, ArrowRightCircle, Coins, MessageCircle, Rocket, Wrench, Database, ExternalLink } from "lucide-react"
 import NavLink from "./components/NavLink"
 import { useState } from "react"
 
@@ -13,9 +13,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-navy-950">
-      {/* ETH Migration Banner */}
+      {/* ETH Migration Complete Banner */}
       <a
-        href="https://x.com/MoozNft/status/1992316014093271447?s=20"
+        href="https://x.com/CoolCowsLab/status/2069725634658509222?s=20"
         target="_blank"
         rel="noopener noreferrer"
         className="relative z-50 w-full bg-gradient-to-r from-secondary/20 via-secondary/30 to-secondary/20 border-b border-secondary/30 hover:from-secondary/30 hover:via-secondary/40 hover:to-secondary/30 transition-all duration-300 group"
@@ -24,8 +24,8 @@ export default function Home() {
           <div className="flex items-center justify-center gap-3 text-sm md:text-base">
             <Sparkles className="h-4 w-4 text-secondary animate-pulse" />
             <span className="text-white font-medium">
-              <span className="text-secondary font-bold">MOOZ is migrating to Ethereum!</span>
-              <span className="text-navy-200 ml-2">Learn more about this exciting expansion</span>
+              <span className="text-secondary font-bold">MOOZ Migration is Complete!</span>
+              <span className="text-navy-200 ml-2">Locked at 1,700 supply on Ethereum. Cool Cows Lab is ready on Sei!</span>
             </span>
             <ArrowRight className="h-4 w-4 text-secondary group-hover:translate-x-1 transition-transform" />
           </div>
@@ -51,17 +51,9 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-6">
             {[
               { href: "#about", label: "About" },
-              { 
-                href: "#staking", 
-                label: (
-                  <span className="glow-text-green relative inline-block">
-                    Staking
-                  </span>
-                )
-              },
+              { href: "#lab", label: "Cool Cows Lab" },
               { href: "#roadmap", label: "Roadmap" },
-              { href: "#team", label: "Team" }, 
-              
+              { href: "#team", label: "Team" },
             ].map((link) => (
               <a
                 key={link.href}
@@ -93,17 +85,9 @@ export default function Home() {
             <nav className="container py-4 flex flex-col gap-4">
               {[
                 { href: "#about", label: "About" },
-                { 
-                  href: "#staking", 
-                  label: (
-                    <span className="glow-text-green relative inline-block">
-                      Staking
-                    </span>
-                  )
-                },
+                { href: "#lab", label: "Cool Cows Lab" },
                 { href: "#roadmap", label: "Roadmap" },
-                { href: "#team", label: "Team" }, 
-                
+                { href: "#team", label: "Team" },
               ].map((link) => (
                 <a
                   key={link.href}
@@ -134,17 +118,17 @@ export default function Home() {
           <div className="container relative z-10 flex flex-col items-center text-center">
             <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Welcome to the MOOZ farm</h1>
             <p className="text-xl md:text-2xl text-navy-300 max-w-3xl mb-10">
-              Collect unique digital MOOZ cows and build your virtual farm in the blockchain
+              Collect unique digital MOOZ cows on Ethereum. MOOZ has successfully migrated to Ethereum with a final locked supply of 1,700 NFTs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href="https://magiceden.io/collections/ethereum/mooz"
+                href="https://opensea.io/collection/mooznfts"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="bg-gradient-me hover:opacity-90 text-white text-lg px-8 py-6">
+                <Button className="bg-gradient-opensea hover:opacity-90 text-white text-lg px-8 py-6">
                   <ShoppingCart className="mr-2 h-5 w-5" />
-                  Buy on Marketplace
+                  Buy on OpenSea
                 </Button>
               </a>
             </div>
@@ -181,29 +165,29 @@ export default function Home() {
                   </Button>
                 </a>
               </div>
-              {/* Magic Eden Column (Simplified) with Background */}
-              <div className="relative flex flex-col items-center md:items-start text-center md:text-left p-8 rounded-xl overflow-hidden bg-cover bg-center bg-[url('/images/marketplace/marketplace-preview.jpg')]">
+              {/* OpenSea Column with Background */}
+              <div className="relative flex flex-col items-center md:items-start text-center md:text-left p-8 rounded-xl overflow-hidden bg-cover bg-center bg-[url('/images/marketplace/opensea-preview.png')]">
                 {/* Overlay for text readability */}
                 <div className="absolute inset-0 bg-navy-950/70 z-0 rounded-xl"></div>
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center md:items-start w-full">
                   <Image
-                      src="/images/marketplace/magic-eden.webp"
-                      alt="Magic Eden Logo"
+                      src="/images/marketplace/opensea.svg"
+                      alt="OpenSea Logo"
                       width={60}
                       height={60}
                       className="mb-4"
                     />
-                <h3 className="text-2xl font-bold text-white mb-4">Available on Magic Eden</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">Available on OpenSea</h3>
                 <p className="text-navy-300 mb-6">
                   Purchase MOOZ Cows on the official secondary marketplace.
                 </p>
                 <a
-                  href="https://magiceden.io/collections/ethereum/mooz"
+                  href="https://opensea.io/collection/mooznfts"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className="bg-gradient-me hover:opacity-90 text-white">
+                  <Button className="bg-gradient-opensea hover:opacity-90 text-white">
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     View Listings
                   </Button>
@@ -214,109 +198,74 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Staking Section */}
-        <section id="staking" className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/staking/stacking.jpg"
-              alt="Staking Background"
-              fill
-              className="object-cover opacity-20"
-              priority
-            />
+        {/* Cool Cows Lab Section */}
+        <section id="lab" className="relative py-20 overflow-hidden bg-navy-900/40">
+          {/* Decorative background glows */}
+          <div className="absolute inset-0 z-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-opensea rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-me rounded-full blur-3xl"></div>
           </div>
-          <div className="container relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-6 animate-glow">
-                Staking is LIVE! 👑
-              </h2>
-              <p className="text-xl md:text-2xl text-navy-300 mb-8">
-                Claim Your Royal Rewards
-              </p>
-              <div className="prose prose-invert mx-auto mb-10">
-                <p className="text-lg text-navy-300 mb-6">
-                  Lock your MOOZ NFT in the Kingdom's Vault and watch your loyalty bloom into riches. 
-                  Earn passive $MOOZ rewards while fortifying Moovia's future — your tokens power the realm!
-                </p>
-                
-                {/* Important Notice */}
-                <div className="my-6 p-4 bg-secondary/10 border border-secondary/30 rounded-xl">
-                  <p className="text-sm text-navy-200 text-center">
-                    <span className="font-semibold text-secondary">⚠️ Important:</span> NFT staking rewards will pause on <span className="font-bold text-white">December 1st</span>. 
-                    Vaults will continue operating, and $MOOZ tokens will power our new <a href="https://x.com/CoolCowsLab" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-secondary/80 underline">Cool Cows Lab</a>!
-                  </p>
-                </div>
 
-                <div className="my-8 p-6 bg-navy-900/50 rounded-xl border border-navy-800 glow-border">
-                  <h3 className="text-xl font-bold text-white mb-6 text-center animate-pulse-slow">The Crown's Command:</h3>
-                  <ul className="text-navy-300 space-y-6 list-none p-0 m-0">
-                    <li className="flex items-center justify-center text-lg">
-                      <span className="glow-text-green">✨ Stake your MOOZ NFT</span>
-                      <span className="ml-2 px-2 py-0.5 bg-navy-800 text-navy-300 text-xs rounded-full">
-                        Until Dec 1
-                      </span>
-                    </li>
-                    <li className="flex items-center justify-center text-lg glow-text-green">
-                      <span>💰 Stake $MOOZ tokens in Vaults to earn WSEI</span>
-                      <span className="ml-2 px-2 py-0.5 bg-secondary/20 text-secondary text-xs rounded-full animate-pulse">
-                        Ongoing
-                      </span>
-                    </li>
-                    <li className="flex items-center justify-center text-lg glow-text-blue">
-                      <span>🔬 $MOOZ powers <a href="https://x.com/CoolCowsLab" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">Cool Cows Lab</a></span>
-                    </li>
-                  </ul>
+          <div className="container relative z-10">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-opensea/10 border border-gradient-opensea/20 text-secondary text-sm font-semibold mb-4 animate-glow">
+                <Sparkles className="h-4 w-4 text-secondary" />
+                The Next Chapter
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+                Cool Cows Lab is Ready 🧪
+              </h2>
+              <p className="text-xl text-navy-300 max-w-2xl mx-auto">
+                THE CYCLE IS HERE. We've built an unbreakable foundation through the bear market and are ready to dominate this cycle on Sei.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+              {/* Card 1: The Launchpad */}
+              <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Rocket className="h-6 w-6 text-secondary" />
                 </div>
-                <p className="text-lg text-navy-300 italic">
-                  The throne awaits those who seize the moment. Will you rule?
+                <h3 className="text-xl font-bold text-white mb-4">The Launchpad</h3>
+                <p className="text-navy-300 leading-relaxed">
+                  Our tech is battle-tested and ready to incubate the next tier of Web3 projects. Providing secure infrastructure and support to bring top-tier collections to life on Sei.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="https://grazing.mooz.farm/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-me rounded-xl hover:opacity-90 transition-opacity glow-button"
-                >
-                  Enter the Staking Portal
-                  <svg
-                    className="ml-2 h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://grazing.mooz.farm/vaults"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-navy-800 border border-secondary/50 rounded-xl hover:bg-navy-700 hover:border-secondary transition-all glow-button"
-                >
-                  View Vaults
-                  <svg
-                    className="ml-2 h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
+
+              {/* Card 2: The Tools */}
+              <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Wrench className="h-6 w-6 text-secondary" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">The Tools</h3>
+                <p className="text-navy-300 leading-relaxed">
+                  No more guessing in the trenches. Our custom analytics and management utilities are dialed in to give the herd the exact edge needed to win this bull cycle.
+                </p>
               </div>
+
+              {/* Card 3: The Vaults */}
+              <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Database className="h-6 w-6 text-secondary" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">The Vaults</h3>
+                <p className="text-navy-300 leading-relaxed">
+                  The heartbeat of our ecosystem. Staking, rewards, and the true utility of the $MOOZ token are ready to run at full speed as part of our core launchpad hub.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <a
+                href="https://x.com/MoozNft/status/2004636909180755982?s=20"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-gradient-opensea hover:opacity-90 text-white text-lg px-8 py-6 rounded-xl font-medium">
+                  Read the Announcement
+                  <ExternalLink className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
             </div>
           </div>
         </section>
@@ -402,8 +351,8 @@ export default function Home() {
                   },
                   {
                     phase: "✅ 80%",
-                    title: "The Grazing Grounds & Vaults",
-                    description: "Staking and grazing are now LIVE! Stake your MOOZ NFTs to earn rewards, and use our Vaults system to stake $MOOZ tokens and earn WSEI. Visit grazing.mooz.farm to start earning!",
+                    title: "Vaults & Staking Relocation",
+                    description: "Staking on SEI is now decommissioned. Vaults are being relocated and relaunched soon on Ethereum for $MOOZ staking and utilities.",
                   },
                   {
                     phase: "✅ 90%",
@@ -416,9 +365,14 @@ export default function Home() {
                     description: "One of the coolest things about MOOZ family is seeing community-led initiatives thrive! This grassroots effort by passionate holders is a great example of how the MOOZ ecosystem grows organically. HighlanderDAO empowers the community with governance rights and collaborative decision-making, showcasing the decentralized spirit of the MOOZ family.",
                   },
                   {
-                    phase: "🚀 MIGRATION",
-                    title: "Migration to Ethereum",
-                    description: "MOOZ is expanding to Ethereum! This strategic migration enhances scalability, increases liquidity, and opens access to the broader DeFi ecosystem. The move brings MOOZ to a larger user base and enables compatibility with a wide range of dApps and wallets. Learn more about the migration process and its benefits in our official announcement.",
+                    phase: "✅ 100%",
+                    title: "Migration Complete",
+                    description: "The SEI chapter is closed, and the migration to Ethereum is officially complete. Unmigrated NFTs have been removed, locking the final total supply permanently at 1,700 NFTs on Ethereum.",
+                  },
+                  {
+                    phase: "🚀 NEXT PHASE",
+                    title: "Cool Cows Lab Launch",
+                    description: "Relaunching staking and tools on Sei as our launchpad, custom analytics, and developer hub. Stay tuned for the Cool Cows Lab updates!",
                   },
                 ].map((item, i) => (
                   <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
@@ -564,52 +518,30 @@ export default function Home() {
                       icon: HelpCircle,
                       questions: [
                         {
-                          q: "Why is the migration happening?",
-                          a: "We're moving MOOZ to a new blockchain for a stronger, more reliable foundation, improved opportunities, and a better long-term experience for our holders."
+                          q: "What happened to the migration?",
+                          a: "The migration of MOOZ from SEI to Ethereum is officially complete. The SEI collection is fully decommissioned, all migration tickets are closed, and unmigrated NFTs have been absorbed and removed from the collection."
                         },
                         {
-                          q: "What chain is MOOZ migrating to?",
-                          a: "The collection is migrating to Ethereum, chosen for its security, liquidity, and infrastructure. The new supply on ETH will be 2,555."
+                          q: "What blockchain is MOOZ currently on?",
+                          a: "MOOZ now officially lives on Ethereum as our flagship collection. You can purchase MOOZ Cows on OpenSea."
+                        },
+                        {
+                          q: "What is the final total supply of MOOZ?",
+                          a: "The final supply of MOOZ on Ethereum has been permanently locked at 1,700 NFTs. To celebrate this milestone, 30 exclusive MOOZ NFTs were minted and airdropped to random ETH holders."
                         }
                       ]
                     },
                     {
-                      category: "Migration Process",
+                      category: "Cool Cows Lab & Sei Ecosystem",
                       icon: ArrowRightCircle,
                       questions: [
                         {
-                          q: "Do I need to unstake my NFTs?",
-                          a: "Yes, please unstake all NFTs before staking rewards stop on December 1."
+                          q: "What is Cool Cows Lab?",
+                          a: "Cool Cows Lab is our tools and launchpad hub on Sei. It is designed to incubate top-tier Web3 projects, provide custom analytics/management utilities, and serve as the developer center of our ecosystem."
                         },
-                        {
-                          q: "How do I claim my new NFTs?",
-                          a: "Starting December 8, burn your SEI NFT using our burn2claim process to receive your new Ethereum NFT."
-                        },
-                        {
-                          q: "Can I migrate manually?",
-                          a: "Yes! Until burn2claim is live, you can request a manual migration via ticket. Our dev @misios.sol will help with the process."
-                        },
-                        {
-                          q: "What happens if I don't migrate my NFTs?",
-                          a: "Remaining NFTs on SEI will lose utility and may be delisted. Future upgrades and utilities will only be available on the new chain."
-                        },
-                        {
-                          q: "Will there be fees to migrate?",
-                          a: "Your ETH gas fees for claiming will be covered by us! You only need to pay the SEI transaction fee for the burn2claim process."
-                        }
-                      ]
-                    },
-                    {
-                      category: "Rewards and Tokens",
-                      icon: Coins,
-                      questions: [
                         {
                           q: "Will I still earn $MOOZ rewards?",
-                          a: "Vaults will continue to operate for $MOOZ token on Sei after migration. New $MOOZ earnings will also connect with Cool Cows Labs."
-                        },
-                        {
-                          q: "Will royalties change during migration?",
-                          a: "Yes, royalties will be increased to discourage new sales and encourage holders to migrate their NFTs."
+                          a: "Yes! While staking on SEI has decommissioned, Vaults, staking, and management tools are relaunching soon on Sei under the Cool Cows Lab ecosystem, powering $MOOZ token utilities."
                         }
                       ]
                     },
@@ -618,12 +550,8 @@ export default function Home() {
                       icon: MessageCircle,
                       questions: [
                         {
-                          q: "What should I do if there is a problem during migration?",
-                          a: "Contact the team in #migration-questions or open a support ticket for assistance. We're here to help you through every step."
-                        },
-                        {
-                          q: "Is the migration safe and secure?",
-                          a: "Yes, the migration process follows industry best practices to ensure your NFT is safely minted on Ethereum when you burn your old SEI NFT."
+                          q: "How can I stay updated on Cool Cows Lab and MOOZ roadmap?",
+                          a: "Follow our official Twitter account @MoozNft and join our Discord community. We will be sharing details on our next roadmap chapter and tool suite soon."
                         }
                       ]
                     }
@@ -683,19 +611,19 @@ export default function Home() {
                   {[
                     {
                       question: "What blockchain are MOOZ Cows on?",
-                      answer: "MOOZ Cows are currently on the SEI blockchain, providing fast transactions and low gas fees. We're migrating to Ethereum for enhanced security, liquidity, and infrastructure. The migration process is now underway."
+                      answer: "MOOZ Cows are on the Ethereum blockchain as our flagship collection. Cool Cows Lab tools and launchpad will reside on the SEI blockchain."
                     },
                     {
                       question: "How many cows are in the collection?",
-                      answer: "There are a total of 3,333 unique MOOZ Cows in the collection on SEI. After migration to Ethereum, the new supply will be 2,555."
+                      answer: "The final total supply of MOOZ Cows on Ethereum is permanently locked at 1,700 NFTs."
                     },
                     {
                       question: "How do I purchase a MOOZ Cow?",
-                      answer: "The collection is already fully minted. You can purchase MOOZ Cows on Magic Eden marketplace. After migration, the collection will be available on Ethereum-based marketplaces."
+                      answer: "The collection is already fully minted. You can purchase MOOZ Cows on OpenSea."
                     },
                     {
                       question: "What are the benefits of owning a MOOZ Cow?",
-                      answer: "Owners get access to exclusive community events, future airdrops, staking rewards, and will be able to participate in the breeding and farming mechanics. All utilities will continue on Ethereum after migration."
+                      answer: "Owners get access to exclusive community events, future airdrops, and benefits within the Cool Cows Lab ecosystem (Launchpad, Tools, and Vaults)."
                     }
                   ].map((faq, i) => {
                     const isOpen = openFaqIndex === i;
@@ -744,7 +672,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
-                href="https://magiceden.io/collections/ethereum/mooz"
+                href="https://opensea.io/collection/mooznfts"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
@@ -754,7 +682,7 @@ export default function Home() {
                   className="!bg-[#020B2D] hover:!bg-[#1A215E] !text-white w-full sm:w-auto text-lg px-8 py-6 rounded-lg font-medium transition-colors"
                 >
                   <ShoppingCart className="mr-2 h-5 w-5" />
-                  Buy on Marketplace
+                  Buy on OpenSea
                 </Button>
               </a>
               <a 

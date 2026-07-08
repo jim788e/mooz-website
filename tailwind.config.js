@@ -68,6 +68,7 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-me": "linear-gradient(to right, #FF3366, #FF9933)",
+        "gradient-opensea": "linear-gradient(to right, #2081E2, #15B2D6)",
       },
       borderRadius: {
         lg: "var(--radius)",

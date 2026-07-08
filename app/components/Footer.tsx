@@ -48,10 +48,6 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-secondary transition-colors">
               Terms & Conditions
             </Link>
-            {/* Removed <li> tags */}
-            <Link href="/terms/staking" className="hover:text-secondary transition-colors">
-              Staking Terms
-            </Link>
             <Link href="/privacy" className="hover:text-secondary transition-colors">
               Privacy Policy
             </Link>
