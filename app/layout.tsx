@@ -8,7 +8,9 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ["latin"] })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.mooz.top');
+  (process.env.VERCEL_ENV === 'production' 
+    ? 'https://www.mooz.top' 
+    : (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.mooz.top'));
 
 export const metadata: Metadata = {
   title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
