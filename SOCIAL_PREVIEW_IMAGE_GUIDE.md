@@ -21,7 +21,7 @@ For the best social media preview experience, create a dedicated Open Graph imag
    - "Staking LIVE" badge or text
    - "Migrating to Ethereum" announcement
    - Collection size: "3,333 MOOZ Cows"
-   - Call to action: "Visit mooz.farm"
+   - Call to action: "Visit mooz.top"
 
 2. **Visual Elements:**
    - Use MOOZ brand colors (navy blue, orange gradient)

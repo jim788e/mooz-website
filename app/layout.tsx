@@ -7,6 +7,9 @@ import Footer from './components/Footer'
 
 const inter = Inter({ subsets: ["latin"] })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://www.mooz.top');
+
 export const metadata: Metadata = {
   title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
   description: "MOOZ is a flagship NFT collection of 1,700 digital cows on Ethereum. Staking, Vaults, and custom analytics are launching soon on Sei via Cool Cows Lab.",
@@ -14,11 +17,11 @@ export const metadata: Metadata = {
   authors: [{ name: "MOOZ Team" }],
   creator: "MOOZ Collection",
   publisher: "MOOZ Collection",
-  metadataBase: new URL('https://www.mooz.farm'),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
     description: "MOOZ is a flagship NFT collection of 1,700 digital cows on Ethereum. Staking, Vaults, and custom analytics are launching soon on Sei via Cool Cows Lab.",
-    url: 'https://www.mooz.farm',
+    url: siteUrl,
     siteName: 'MOOZ',
     images: [
       {

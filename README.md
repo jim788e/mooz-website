@@ -2,7 +2,7 @@
 
 A modern web application for the MOOZ NFT Collection on the SEI blockchain, built with Next.js 15 and TailwindCSS.
 
-🌐 **Official Website**: [https://www.mooz.farm](https://www.mooz.farm)
+🌐 **Official Website**: [https://www.mooz.top](https://www.mooz.top)
 
 ## 🌟 Features
 

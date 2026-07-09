@@ -7,7 +7,7 @@ const nextConfig = {
   experimental: {
     // Enable server actions if needed
     serverActions: {
-      allowedOrigins: ['localhost:3000', 'mooz.farm'],
+      allowedOrigins: ['localhost:3000', 'mooz.top'],
     },
   },
   async redirects() {
