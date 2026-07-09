@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: 'MOOZ',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'MOOZ NFT Collection - Live on Ethereum | Cool Cows Lab',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "MOOZ - NFT Collection | Live on Ethereum | Cool Cows Lab",
     description: "MOOZ is a flagship NFT collection of 1,700 digital cows on Ethereum. Staking, Vaults, and custom analytics are launching soon on Sei via Cool Cows Lab.",
-    images: ['/images/og-image.png'],
+    images: ['/images/og-image.jpg'],
     creator: '@MoozNft',
     site: '@MoozNft',
   },
