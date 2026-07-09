@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@flipsidecrypto/sdk": "^2.1.0",
+    "@gsap/react": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@tanstack/react-query": "^5.66.9",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "gsap": "^3.15.0",
     "lucide-react": "^0.323.0",
     "next": "15.2.8",
     "react": "^19.0.0",

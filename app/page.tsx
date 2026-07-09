@@ -4,15 +4,295 @@ import Link from "next/link"
 import { Button } from "./components/ui/button"
 import { ShoppingCart, ArrowRight, Sparkles, Menu, X, Twitter, DiscIcon as Discord, ChevronDown, HelpCircle, ArrowRightCircle, Coins, MessageCircle, Rocket, Wrench, Database, ExternalLink } from "lucide-react"
 import NavLink from "./components/NavLink"
-import { useState } from "react"
+import { useState, useRef } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from "@gsap/react"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Home() {
+  const mainRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [openMigrationIndex, setOpenMigrationIndex] = useState<number | null>(null);
 
+  useGSAP(() => {
+    // 1. Hero Load & Parallax Animations
+    gsap.from('.hero-bg', {
+      scale: 1.15,
+      opacity: 0,
+      duration: 1.8,
+      ease: 'power2.out',
+    });
+
+    gsap.from('.hero-word', {
+      y: '120%',
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.08,
+      ease: 'power4.out',
+    });
+
+    gsap.from('.hero-text', {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      delay: 0.6,
+      ease: 'power3.out',
+    });
+
+    gsap.from('.hero-cta', {
+      scale: 0.9,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.9,
+      ease: 'back.out(1.7)',
+    });
+
+    gsap.to('.hero-bg', {
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+      y: 120,
+      ease: 'none',
+    });
+
+    // 2. Marketplace Section ScrollTrigger
+    gsap.from('.marketplace-header', {
+      scrollTrigger: {
+        trigger: '.marketplace-header',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+    });
+
+    gsap.from('.marketplace-tracker', {
+      scrollTrigger: {
+        trigger: '#marketplace',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+      x: -50,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    });
+
+    gsap.from('.marketplace-opensea', {
+      scrollTrigger: {
+        trigger: '#marketplace',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+      x: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    });
+
+    // 3. Cool Cows Lab Section ScrollTrigger
+    gsap.from('.lab-badge, .lab-header, .lab-desc', {
+      scrollTrigger: {
+        trigger: '#lab',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+    });
+
+    gsap.from('.lab-card', {
+      scrollTrigger: {
+        trigger: '#lab',
+        start: 'top 75%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+    });
+
+    gsap.from('.lab-cta', {
+      scrollTrigger: {
+        trigger: '.lab-cta',
+        start: 'top 90%',
+        toggleActions: 'play none none reverse',
+      },
+      scale: 0.9,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'back.out(1.7)',
+    });
+
+    // 4. About Section ScrollTrigger
+    gsap.from('.about-content-item', {
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+    });
+
+    gsap.from('.about-image', {
+      scrollTrigger: {
+        trigger: '.about-image',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+      scale: 0.95,
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.out',
+    });
+
+    // 5. Roadmap Timeline Drawing & Staggered Items
+    gsap.to('.roadmap-progress-line', {
+      scrollTrigger: {
+        trigger: '#roadmap',
+        start: 'top 50%',
+        end: 'bottom 80%',
+        scrub: true,
+      },
+      scaleY: 1,
+      ease: 'none',
+    });
+
+    gsap.utils.toArray<HTMLElement>('.roadmap-node').forEach((node) => {
+      gsap.from(node, {
+        scrollTrigger: {
+          trigger: node,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+        scale: 0,
+        duration: 0.6,
+        ease: 'back.out(2)',
+      });
+    });
+
+    gsap.utils.toArray<HTMLElement>('.roadmap-item').forEach((item) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+    });
+
+    // 6. Team Cards ScrollTrigger
+    gsap.from('.team-header', {
+      scrollTrigger: {
+        trigger: '#team',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+    });
+
+    gsap.from('.team-card', {
+      scrollTrigger: {
+        trigger: '#team',
+        start: 'top 75%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+    });
+
+    // 3D Card Flip on Hover
+    gsap.utils.toArray<HTMLElement>('.team-card').forEach((wrapper) => {
+      const inner = wrapper.querySelector('.team-card-inner');
+      const back = wrapper.querySelector('.team-card-back');
+      
+      if (!inner || !back) return;
+
+      // Set back face initial rotation
+      gsap.set(back, { rotateY: 180 });
+
+      let flipTween: gsap.core.Tween;
+
+      wrapper.addEventListener('mouseenter', () => {
+        if (flipTween) flipTween.kill();
+        flipTween = gsap.to(inner, {
+          rotateY: 180,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 0.4, // Small delay before flip
+        });
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        if (flipTween) flipTween.kill();
+        flipTween = gsap.to(inner, {
+          rotateY: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
+      });
+    });
+
+    // 7. FAQ Section ScrollTrigger
+    gsap.from('.faq-header', {
+      scrollTrigger: {
+        trigger: '.faq-header',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+    });
+
+    gsap.from('.faq-category', {
+      scrollTrigger: {
+        trigger: '.faq-header',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+    });
+
+    // Refresh triggers to adjust for image size layout shifts
+    const handleLoad = () => ScrollTrigger.refresh();
+    window.addEventListener('load', handleLoad);
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 1000);
+    return () => {
+      window.removeEventListener('load', handleLoad);
+      clearTimeout(timer);
+    };
+  }, { scope: mainRef });
+
   return (
-    <div className="flex flex-col min-h-screen bg-navy-950">
+    <div ref={mainRef} className="flex flex-col min-h-screen bg-navy-950">
       {/* ETH Migration Complete Banner */}
       <a
         href="https://x.com/CoolCowsLab/status/2069725634658509222?s=20"
@@ -105,8 +385,8 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 z-0">
+        <section className="relative py-20 overflow-hidden hero-section">
+          <div className="absolute inset-0 z-0 hero-bg">
             <Image
               src="/images/bg/hero-bg.avif"
               alt="Hero Background"
@@ -116,11 +396,17 @@ export default function Home() {
             />
           </div>
           <div className="container relative z-10 flex flex-col items-center text-center">
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Welcome to the MOOZ farm</h1>
-            <p className="text-xl md:text-2xl text-navy-300 max-w-3xl mb-10">
+            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6 hero-title flex flex-wrap justify-center gap-x-3 gap-y-1">
+              {"Welcome to the MOOZ farm".split(" ").map((word, i) => (
+                <span key={i} className="inline-block overflow-hidden pb-1">
+                  <span className="hero-word inline-block">{word}</span>
+                </span>
+              ))}
+            </h1>
+            <p className="text-xl md:text-2xl text-navy-300 max-w-3xl mb-10 hero-text">
               Collect unique digital MOOZ cows on Ethereum. MOOZ has successfully migrated to Ethereum with a final locked supply of 1,700 NFTs.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 hero-cta">
               <a
                 href="https://opensea.io/collection/mooznfts"
                 target="_blank"
@@ -138,10 +424,10 @@ export default function Home() {
         {/* Marketplace & Sales Tracker Section */}
         <section id="marketplace" className="py-20 bg-navy-950">
           <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Marketplace & Sales</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12 marketplace-header">Marketplace & Sales</h2>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Sales Tracker Column */}
-              <div className="flex flex-col items-center md:items-start text-center md:text-left"> {/* Added flex, items-center, md:items-start, text-center, md:text-left */}
+              <div className="flex flex-col items-center md:items-start text-center md:text-left marketplace-tracker"> {/* Added flex, items-center, md:items-start, text-center, md:text-left */}
                 <h3 className="text-2xl font-bold text-white mb-6">Track MOOZ Sales on X</h3>
                 <div className="relative h-[300px] w-full max-w-sm rounded-xl overflow-hidden mb-6"> {/* Added w-full max-w-sm for better image sizing */}
                   <Image
@@ -166,7 +452,7 @@ export default function Home() {
                 </a>
               </div>
               {/* OpenSea Column with Background */}
-              <div className="relative flex flex-col items-center md:items-start text-center md:text-left p-8 rounded-xl overflow-hidden bg-cover bg-center bg-[url('/images/marketplace/opensea-preview.png')]">
+              <div className="relative flex flex-col items-center md:items-start text-center md:text-left p-8 rounded-xl overflow-hidden bg-cover bg-center bg-[url('/images/marketplace/opensea-preview.png')] marketplace-opensea">
                 {/* Overlay for text readability */}
                 <div className="absolute inset-0 bg-navy-950/70 z-0 rounded-xl"></div>
                 {/* Content */}
@@ -208,54 +494,60 @@ export default function Home() {
 
           <div className="container relative z-10">
             <div className="max-w-4xl mx-auto text-center mb-16">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-opensea/10 border border-gradient-opensea/20 text-secondary text-sm font-semibold mb-4 animate-glow">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-opensea/10 border border-gradient-opensea/20 text-secondary text-sm font-semibold mb-4 animate-glow lab-badge">
                 <Sparkles className="h-4 w-4 text-secondary" />
                 The Next Chapter
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6 lab-header">
                 Cool Cows Lab is Ready 🧪
               </h2>
-              <p className="text-xl text-navy-300 max-w-2xl mx-auto">
+              <p className="text-xl text-navy-300 max-w-2xl mx-auto lab-desc">
                 THE CYCLE IS HERE. We've built an unbreakable foundation through the bear market and are ready to dominate this cycle on Sei.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
               {/* Card 1: The Launchpad */}
-              <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)]">
-                <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Rocket className="h-6 w-6 text-secondary" />
+              <div className="lab-card">
+                <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)] h-full">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Rocket className="h-6 w-6 text-secondary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">The Launchpad</h3>
+                  <p className="text-navy-300 leading-relaxed">
+                    Our tech is battle-tested and ready to incubate the next tier of Web3 projects. Providing secure infrastructure and support to bring top-tier collections to life on Sei.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">The Launchpad</h3>
-                <p className="text-navy-300 leading-relaxed">
-                  Our tech is battle-tested and ready to incubate the next tier of Web3 projects. Providing secure infrastructure and support to bring top-tier collections to life on Sei.
-                </p>
               </div>
 
               {/* Card 2: The Tools */}
-              <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)]">
-                <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Wrench className="h-6 w-6 text-secondary" />
+              <div className="lab-card">
+                <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)] h-full">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Wrench className="h-6 w-6 text-secondary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">The Tools</h3>
+                  <p className="text-navy-300 leading-relaxed">
+                    No more guessing in the trenches. Our custom analytics and management utilities are dialed in to give the herd the exact edge needed to win this bull cycle.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">The Tools</h3>
-                <p className="text-navy-300 leading-relaxed">
-                  No more guessing in the trenches. Our custom analytics and management utilities are dialed in to give the herd the exact edge needed to win this bull cycle.
-                </p>
               </div>
 
               {/* Card 3: The Vaults */}
-              <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)]">
-                <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Database className="h-6 w-6 text-secondary" />
+              <div className="lab-card">
+                <div className="group relative bg-navy-900/60 backdrop-blur-sm rounded-2xl p-8 border border-navy-800 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_10px_30px_rgba(255,153,51,0.1)] h-full">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-opensea/10 flex items-center justify-center border border-gradient-opensea/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Database className="h-6 w-6 text-secondary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">The Vaults</h3>
+                  <p className="text-navy-300 leading-relaxed">
+                    The heartbeat of our ecosystem. Staking, rewards, and the true utility of the $MOOZ token are ready to run at full speed as part of our core launchpad hub.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">The Vaults</h3>
-                <p className="text-navy-300 leading-relaxed">
-                  The heartbeat of our ecosystem. Staking, rewards, and the true utility of the $MOOZ token are ready to run at full speed as part of our core launchpad hub.
-                </p>
               </div>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center lab-cta">
               <a
                 href="https://x.com/MoozNft/status/2004636909180755982?s=20"
                 target="_blank"
@@ -275,17 +567,17 @@ export default function Home() {
   <div className="container">
     <div className="grid md:grid-cols-2 gap-12 items-start">
       <div className="max-w-2xl">
-        <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-6">About MOOZ Cows</h2>
-        <p className="text-navy-300 mb-4 leading-relaxed text-justify">
+        <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-6 about-content-item">About MOOZ Cows</h2>
+        <p className="text-navy-300 mb-4 leading-relaxed text-justify about-content-item">
           Mooz is a hydropunk adventure-fantasy project that merges storytelling, gaming, and digital collectibles into a thriving, milk-powered world. Set in the Kingdom of Moovia, a once great civilization now rebuilding from its past, Mooz explores a society shaped by milk energy, innovation, and the mysteries of the Storm Veil.
         </p>
-        <p className="text-navy-300 mb-4 leading-relaxed text-justify">
+        <p className="text-navy-300 mb-4 leading-relaxed text-justify about-content-item">
           At its heart, Mooz is a community-driven experience, offering immersive lore, interactive quests, and a collection of uniquely designed Mooz anthropomorphic bovine adventurers with their own histories, factions, and ambitions. Whether through NFTs, games, or digital media, Mooz invites you to step into a world where exploration, invention, and camaraderie define the future.
         </p>
-        <p className="text-navy-300 mb-6 leading-relaxed text-justify">
+        <p className="text-navy-300 mb-6 leading-relaxed text-justify about-content-item">
           Join the Herd and become part of Moovia's unfolding story where your choices help shape the legend.
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-4 about-content-item">
           <a href="https://discord.com/invite/WWBJYYkYt2" target="_blank" rel="noopener noreferrer">
             <Button className="bg-gradient-me hover:opacity-90 text-white">
               <Discord className="mr-2 h-4 w-4" />
@@ -294,7 +586,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-      <div className="w-full min-h-[300px] md:h-[400px] relative rounded-xl overflow-hidden">
+      <div className="w-full min-h-[300px] md:h-[400px] relative rounded-xl overflow-hidden about-image">
         <Image
           src="/images/about/about-preview.jpg"
           alt="About MOOZ Cows"
@@ -311,10 +603,12 @@ export default function Home() {
         {/* Roadmap Section */}
         <section id="roadmap" className="py-20 bg-navy-900">
           <div className="container">
-            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Mooz Roadmap 1.2</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center gradient-text mb-12 roadmap-header">Mooz Roadmap 1.2</h2>
             <div className="relative max-w-4xl mx-auto">
               {/* Vertical line */}
-              <div className="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-navy-800"></div>
+              <div className="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-navy-800 origin-top overflow-hidden">
+                <div className="roadmap-progress-line w-full h-full bg-gradient-to-b from-[#FF3366] via-secondary to-[#FF9933] origin-top scale-y-0"></div>
+              </div>
 
               {/* Roadmap items */}
               <div className="space-y-12">
@@ -375,7 +669,7 @@ export default function Home() {
                     description: "Relaunching staking and tools on Sei as our launchpad, custom analytics, and developer hub. Stay tuned for the Cool Cows Lab updates!",
                   },
                 ].map((item, i) => (
-                  <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
+                  <div key={i} className={`flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row roadmap-item`}>
                     <div className={`w-full md:w-[calc(50%-2.5rem)] ${i % 2 === 0 ? "md:pr-12 md:text-right text-left pl-12" : "md:pl-12 pl-12"}`}>
                       <span className="inline-block px-3 py-1 bg-navy-800 text-secondary rounded-full text-sm font-medium mb-2">
                         {item.phase}
@@ -383,7 +677,7 @@ export default function Home() {
                       <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
                       <p className="text-navy-300">{item.description}</p>
                     </div>
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-1">
+                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-1 roadmap-node">
                       <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-gradient-me border-4 border-navy-950">
                         <span className="text-white font-bold">{i + 1}</span>
                       </div>
@@ -405,7 +699,7 @@ export default function Home() {
           </div>
           
           <div className="container relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 team-header">
               <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Meet the Farmers</h2>
               <p className="text-navy-300 text-lg max-w-2xl mx-auto">
                 The passionate team building the MOOZ ecosystem
@@ -427,59 +721,70 @@ export default function Home() {
                   twitter: "https://x.com/BenSEI_1337",
                 },
               ].map((member, i) => (
-                <div
-                  key={i}
-                  className="group relative bg-gradient-to-br from-navy-900 to-navy-800 rounded-2xl overflow-hidden border border-navy-700/50 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(255,153,51,0.3)]"
-                >
-                  {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:to-transparent transition-all duration-300 pointer-events-none"></div>
-                  
-                  <div className="relative aspect-square overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={`${member.name}'s profile picture`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"></div>
-                  </div>
-                  
-                  <div className="p-8 text-center relative">
-                    <div className="mb-4">
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">
-                        {member.name}
-                      </h3>
-                      <div className="inline-block px-4 py-1.5 bg-navy-800/50 rounded-full border border-navy-700/50">
-                        <p className="text-navy-300 text-sm font-medium">{member.role}</p>
+                <div key={i} className="team-card h-[460px] sm:h-[520px] md:h-[480px] lg:h-[520px] w-full perspective-1000">
+                  <div className="team-card-inner relative w-full h-full cursor-pointer style-3d shadow-2xl rounded-2xl">
+                    {/* FRONT */}
+                    <div className="team-card-front absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-navy-900 to-navy-800 rounded-2xl overflow-hidden border border-navy-700/50 flex flex-col justify-between">
+                      {/* Gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:to-transparent transition-all duration-300 pointer-events-none"></div>
+                      
+                      <div className="relative aspect-square overflow-hidden flex-shrink-0">
+                        <Image
+                          src={member.image}
+                          alt={`${member.name}'s profile picture`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          priority
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"></div>
+                      </div>
+                      
+                      <div className="p-6 text-center relative flex-1 flex flex-col justify-center">
+                        <div className="mb-2">
+                          <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-secondary transition-colors">
+                            {member.name}
+                          </h3>
+                          <div className="inline-block px-4 py-1.5 bg-navy-800/50 rounded-full border border-navy-700/50">
+                            <p className="text-navy-300 text-sm font-medium">{member.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Corner accent */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-secondary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+
+                    {/* BACK */}
+                    <div className="team-card-back absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-navy-950 to-navy-900 rounded-2xl border border-secondary/50 flex flex-col items-center justify-center p-8 text-center bg-[url('/images/bg/hero-bg.avif')] bg-cover bg-center overflow-hidden">
+                      {/* Dark overlay */}
+                      <div className="absolute inset-0 bg-navy-950/90 z-0"></div>
+                      
+                      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                        <div className="w-16 h-16 bg-secondary/10 border border-secondary/30 rounded-full flex items-center justify-center mb-6">
+                          <Twitter className="h-8 w-8 text-secondary" />
+                        </div>
+                        <h4 className="text-xl font-bold text-white mb-2">Connect with {member.name}</h4>
+                        <p className="text-navy-300 mb-6 text-sm">
+                          Follow on X to stay updated with Cool Cows Lab and the MOOZ farm.
+                        </p>
+                        {member.twitter && (
+                          <Link 
+                            href={member.twitter} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            <Button className="bg-gradient-opensea hover:opacity-90 text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2">
+                              <Twitter className="h-4 w-4" />
+                              Follow @{member.twitter.split('/').pop()}
+                            </Button>
+                          </Link>
+                        )}
                       </div>
                     </div>
-                    
-                    <div className="flex justify-center">
-                      {member.twitter && (
-                        <Link 
-                          href={member.twitter} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          aria-label={`${member.name}'s Twitter`}
-                          className="group/social"
-                        >
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="rounded-full text-navy-400 hover:text-secondary hover:bg-navy-800/50 border border-navy-700/50 hover:border-secondary/50 transition-all duration-300 hover:scale-110"
-                          >
-                            <Twitter className="h-5 w-5" />
-                          </Button>
-                        </Link>
-                      )}
-                    </div>
+
                   </div>
-                  
-                  {/* Corner accent */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-secondary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
@@ -495,7 +800,7 @@ export default function Home() {
           </div>
           
           <div className="container relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 faq-header">
               <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
                 Frequently Asked Questions
               </h2>
@@ -506,7 +811,7 @@ export default function Home() {
 
             <div className="max-w-4xl mx-auto space-y-12">
               {/* Migration FAQ Section */}
-              <div>
+              <div className="faq-category">
                 <div className="flex items-center gap-3 mb-6">
                   <ArrowRightCircle className="h-6 w-6 text-secondary" />
                   <h3 className="text-2xl md:text-3xl font-bold text-white">Migration to Ethereum</h3>
@@ -602,7 +907,7 @@ export default function Home() {
               </div>
 
               {/* General FAQ Section */}
-              <div>
+              <div className="faq-category">
                 <div className="flex items-center gap-3 mb-6">
                   <HelpCircle className="h-6 w-6 text-secondary" />
                   <h3 className="text-2xl md:text-3xl font-bold text-white">General Questions</h3>
